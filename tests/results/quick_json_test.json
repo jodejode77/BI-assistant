@@ -1,0 +1,203 @@
+{
+  "dataset_type": "JSON",
+  "total_tests": 10,
+  "successful": 4,
+  "failed": 6,
+  "success_rate": 0.4,
+  "exact_matches": 0,
+  "exact_match_rate": 0.0,
+  "avg_similarity": 0.6281280210708522,
+  "tables_match_rate": 1.0,
+  "semantic_correct_rate": 0.0,
+  "avg_generation_time": 1.0817545056343079,
+  "avg_retries": 0.0,
+  "avg_confidence": 0.4,
+  "total_time": 28.82853364944458,
+  "throughput": 0.3468785517015939,
+  "results": [
+    {
+      "test_id": 1,
+      "question": "Проанализируйте распределение статусов (\"Одобрено\", \"Отказано\") по прошлым кредитным заявкам.",
+      "success": true,
+      "generation_time": 0.6467189788818359,
+      "expected_sql": "SELECT NAME_CONTRACT_STATUS, COUNT(SK_ID_PREV) AS count FROM previous_application WHERE NAME_CONTRACT_STATUS IN ('Approved', 'Refused') GROUP BY NAME_CONTRACT_STATUS;",
+      "generated_sql": "SELECT prev_app.NAME_CONTRACT_STATUS, COUNT(*) AS application_count FROM previous_application AS prev_app WHERE prev_app.NAME_CONTRACT_STATUS IN ('Approved', 'Refused') GROUP BY prev_app.NAME_CONTRACT_STATUS LIMIT 100",
+      "comparison": {
+        "exact_match": false,
+        "similarity": 0.8074866310160428,
+        "tables_match": true,
+        "where_similarity": 0.9052631578947369,
+        "agg_match": true,
+        "group_match": true,
+        "generated_tables": [
+          "previous_application"
+        ],
+        "expected_tables": [
+          "previous_application"
+        ],
+        "generated_sql": "SELECT prev_app.NAME_CONTRACT_STATUS, COUNT(*) AS application_count FROM previous_application AS prev_app WHERE prev_app.NAME_CONTRACT_STATUS IN ('Approved', 'Refused') GROUP BY prev_app.NAME_CONTRACT_STATUS LIMIT 100",
+        "expected_sql": "SELECT NAME_CONTRACT_STATUS, COUNT(SK_ID_PREV) AS count FROM previous_application WHERE NAME_CONTRACT_STATUS IN ('Approved', 'Refused') GROUP BY NAME_CONTRACT_STATUS;",
+        "generated_normalized": "select prev_app.name_contract_status, count(*) as application_count from previous_application as prev_app where prev_app.name_contract_status in (approved, refused) group by prev_app.name_contract_status limit 100",
+        "expected_normalized": "select name_contract_status, count(sk_id_prev) as count from previous_application where name_contract_status in (approved, refused) group by name_contract_status",
+        "semantic_correct": false,
+        "generated_rows": 2,
+        "expected_rows": 2
+      },
+      "retry_count": 0,
+      "confidence": 0.4
+    },
+    {
+      "test_id": 2,
+      "question": "Интересно, какой процент прошлых заявок был одобрен, а какой получил отказ?",
+      "success": true,
+      "generation_time": 1.5099525451660156,
+      "expected_sql": "SELECT NAME_CONTRACT_STATUS, COUNT(SK_ID_PREV) AS count FROM previous_application WHERE NAME_CONTRACT_STATUS IN ('Approved', 'Refused') GROUP BY NAME_CONTRACT_STATUS;",
+      "generated_sql": "SELECT CASE WHEN T1.NAME_CONTRACT_STATUS = 'Approved' THEN 'Approved' WHEN T1.NAME_CONTRACT_STATUS = 'Refused' THEN 'Refused' ELSE 'Other' END AS contract_status, COUNT(*) AS count, ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM previous_application), 2) AS percentage FROM previous_application AS T1 GROUP BY contract_status LIMIT 100",
+      "comparison": {
+        "exact_match": false,
+        "similarity": 0.3786008230452675,
+        "tables_match": true,
+        "where_similarity": 0.0,
+        "agg_match": true,
+        "group_match": true,
+        "generated_tables": [
+          "previous_application"
+        ],
+        "expected_tables": [
+          "previous_application"
+        ],
+        "generated_sql": "SELECT CASE WHEN T1.NAME_CONTRACT_STATUS = 'Approved' THEN 'Approved' WHEN T1.NAME_CONTRACT_STATUS = 'Refused' THEN 'Refused' ELSE 'Other' END AS contract_status, COUNT(*) AS count, ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM previous_application), 2) AS percentage FROM previous_application AS T1 GROUP BY contract_status LIMIT 100",
+        "expected_sql": "SELECT NAME_CONTRACT_STATUS, COUNT(SK_ID_PREV) AS count FROM previous_application WHERE NAME_CONTRACT_STATUS IN ('Approved', 'Refused') GROUP BY NAME_CONTRACT_STATUS;",
+        "generated_normalized": "select case when t1.name_contract_status = approved then approved when t1.name_contract_status = refused then refused else other end as contract_status, count(*) as count, round(count(*) * 100.0 / (select count(*) from previous_application), 2) as percentage from previous_application as t1 group by contract_status limit 100",
+        "expected_normalized": "select name_contract_status, count(sk_id_prev) as count from previous_application where name_contract_status in (approved, refused) group by name_contract_status",
+        "semantic_correct": false,
+        "generated_rows": 3,
+        "expected_rows": 2
+      },
+      "retry_count": 0,
+      "confidence": 0.4
+    },
+    {
+      "test_id": 3,
+      "question": "Покажите соотношение одобренных и отклоненных решений по предыдущим заявлениям.",
+      "success": true,
+      "generation_time": 1.036330223083496,
+      "expected_sql": "SELECT NAME_CONTRACT_STATUS, COUNT(SK_ID_PREV) AS count FROM previous_application WHERE NAME_CONTRACT_STATUS IN ('Approved', 'Refused') GROUP BY NAME_CONTRACT_STATUS;",
+      "generated_sql": "SELECT NAME_CONTRACT_STATUS, COUNT(*) AS count FROM previous_application GROUP BY NAME_CONTRACT_STATUS LIMIT 100",
+      "comparison": {
+        "exact_match": false,
+        "similarity": 0.73992673992674,
+        "tables_match": true,
+        "where_similarity": 0.0,
+        "agg_match": true,
+        "group_match": true,
+        "generated_tables": [
+          "previous_application"
+        ],
+        "expected_tables": [
+          "previous_application"
+        ],
+        "generated_sql": "SELECT NAME_CONTRACT_STATUS, COUNT(*) AS count FROM previous_application GROUP BY NAME_CONTRACT_STATUS LIMIT 100",
+        "expected_sql": "SELECT NAME_CONTRACT_STATUS, COUNT(SK_ID_PREV) AS count FROM previous_application WHERE NAME_CONTRACT_STATUS IN ('Approved', 'Refused') GROUP BY NAME_CONTRACT_STATUS;",
+        "generated_normalized": "select name_contract_status, count(*) as count from previous_application group by name_contract_status limit 100",
+        "expected_normalized": "select name_contract_status, count(sk_id_prev) as count from previous_application where name_contract_status in (approved, refused) group by name_contract_status",
+        "semantic_correct": false,
+        "generated_rows": 4,
+        "expected_rows": 2
+      },
+      "retry_count": 0,
+      "confidence": 0.4
+    },
+    {
+      "test_id": 4,
+      "question": "Рассчитайте долю успешно прошедших скоринг и отклоненных заявок из пула предыдущих обращений.",
+      "success": true,
+      "generation_time": 1.1340162754058838,
+      "expected_sql": "SELECT NAME_CONTRACT_STATUS, COUNT(SK_ID_PREV) AS count FROM previous_application WHERE NAME_CONTRACT_STATUS IN ('Approved', 'Refused') GROUP BY NAME_CONTRACT_STATUS;",
+      "generated_sql": "SELECT CASE WHEN T1.NAME_CONTRACT_STATUS = 'Approved' THEN 'Approved' WHEN T1.NAME_CONTRACT_STATUS = 'Refused' THEN 'Refused' ELSE 'Other' END AS application_status, COUNT(*) AS number_of_applications FROM previous_application AS T1 WHERE T1.NAME_CONTRACT_STATUS IN ('Approved', 'Refused') GROUP BY application_status LIMIT 100",
+      "comparison": {
+        "exact_match": false,
+        "similarity": 0.5864978902953587,
+        "tables_match": true,
+        "where_similarity": 0.9662921348314607,
+        "agg_match": true,
+        "group_match": true,
+        "generated_tables": [
+          "previous_application"
+        ],
+        "expected_tables": [
+          "previous_application"
+        ],
+        "generated_sql": "SELECT CASE WHEN T1.NAME_CONTRACT_STATUS = 'Approved' THEN 'Approved' WHEN T1.NAME_CONTRACT_STATUS = 'Refused' THEN 'Refused' ELSE 'Other' END AS application_status, COUNT(*) AS number_of_applications FROM previous_application AS T1 WHERE T1.NAME_CONTRACT_STATUS IN ('Approved', 'Refused') GROUP BY application_status LIMIT 100",
+        "expected_sql": "SELECT NAME_CONTRACT_STATUS, COUNT(SK_ID_PREV) AS count FROM previous_application WHERE NAME_CONTRACT_STATUS IN ('Approved', 'Refused') GROUP BY NAME_CONTRACT_STATUS;",
+        "generated_normalized": "select case when t1.name_contract_status = approved then approved when t1.name_contract_status = refused then refused else other end as application_status, count(*) as number_of_applications from previous_application as t1 where t1.name_contract_status in (approved, refused) group by application_status limit 100",
+        "expected_normalized": "select name_contract_status, count(sk_id_prev) as count from previous_application where name_contract_status in (approved, refused) group by name_contract_status",
+        "semantic_correct": false,
+        "generated_rows": 2,
+        "expected_rows": 2
+      },
+      "retry_count": 0,
+      "confidence": 0.4
+    },
+    {
+      "test_id": 5,
+      "question": "Постройте график динамики количества предыдущих кредитных заявок в разрезе лет с момента принятия решения.",
+      "success": false,
+      "error": "SQL generation failed after 2 attempts. Last error: (psycopg2.errors.UndefinedColumn) column \"DAYS_DECISION\" does not exist\nLINE 1: EXPLAIN SELECT EXTRACT(YEAR FROM \"DAYS_DECISION\") AS decisio...\n                                         ^\n\n[SQL: EXPLAIN SELECT EXTRACT(YEAR FROM \"DAYS_DECISION\") AS decision_year, COUNT(*) AS previous_applications_count FROM previous_application WHERE \"DAYS_DECISION\" IS NOT NULL GROUP BY decision_year ORDER BY decision_year LIMIT 100]\n(Background on this error at: https://sqlalche.me/e/20/f405)",
+      "generation_time": 2.8065598011016846,
+      "expected_sql": "SELECT CAST(ABS(DAYS_DECISION)/365.25 AS INTEGER) AS years_ago, COUNT(SK_ID_PREV) AS application_count FROM previous_application GROUP BY years_ago ORDER BY years_ago ASC;",
+      "generated_sql": null,
+      "comparison": null
+    },
+    {
+      "test_id": 6,
+      "question": "Как изменялось число прошлых заявок с течением лет после их обработки?",
+      "success": false,
+      "error": "SQL generation failed after 2 attempts. Last error: (psycopg2.errors.UndefinedColumn) column ap.amt_application_submit does not exist\nLINE 1: EXPLAIN SELECT EXTRACT(YEAR FROM AP.AMT_APPLICATION_SUBMIT) ...\n                                         ^\n\n[SQL: EXPLAIN SELECT EXTRACT(YEAR FROM AP.AMT_APPLICATION_SUBMIT) AS application_year, COUNT(PA.SK_ID_PREV) AS number_of_previous_applications FROM application_train AP JOIN previous_application PA ON AP.SK_ID_CURR = PA.SK_ID_CURR GROUP BY application_year ORDER BY application_year LIMIT 100]\n(Background on this error at: https://sqlalche.me/e/20/f405)",
+      "generation_time": 4.440510511398315,
+      "expected_sql": "SELECT CAST(ABS(DAYS_DECISION)/365.25 AS INTEGER) AS years_ago, COUNT(SK_ID_PREV) AS application_count FROM previous_application GROUP BY years_ago ORDER BY years_ago ASC;",
+      "generated_sql": null,
+      "comparison": null
+    },
+    {
+      "test_id": 7,
+      "question": "Какова годовая тенденция по объему ранее поданных заявлений на кредит?",
+      "success": false,
+      "error": "SQL generation failed after 2 attempts. Last error: (psycopg2.errors.UndefinedColumn) column ap.amt_application does not exist\nLINE 1: EXPLAIN SELECT EXTRACT(YEAR FROM AP.AMT_APPLICATION) AS appl...\n                                         ^\nHINT:  Perhaps you meant to reference the column \"pa.amt_application\".\n\n[SQL: EXPLAIN SELECT EXTRACT(YEAR FROM AP.AMT_APPLICATION) AS application_year, COUNT(PA.SK_ID_PREV) AS previous_applications_count FROM application_train AS AP JOIN previous_application AS PA ON AP.SK_ID_CURR = PA.SK_ID_CURR GROUP BY application_year ORDER BY application_year LIMIT 100]\n(Background on this error at: https://sqlalche.me/e/20/f405)",
+      "generation_time": 3.166325569152832,
+      "expected_sql": "SELECT CAST(ABS(DAYS_DECISION)/365.25 AS INTEGER) AS years_ago, COUNT(SK_ID_PREV) AS application_count FROM previous_application GROUP BY years_ago ORDER BY years_ago ASC;",
+      "generated_sql": null,
+      "comparison": null
+    },
+    {
+      "test_id": 8,
+      "question": "Отследите временной тренд по показателям активности предыдущих заявок, агрегированных по годам вынесения вердикта.",
+      "success": false,
+      "error": "SQL generation failed after 2 attempts. Last error: (psycopg2.errors.UndefinedFunction) function pg_catalog.extract(unknown, integer) does not exist\nLINE 1: EXPLAIN SELECT EXTRACT(YEAR FROM previous_application.DAYS_D...\n                       ^\nHINT:  No function matches the given name and argument types. You might need to add explicit type casts.\n\n[SQL: EXPLAIN SELECT EXTRACT(YEAR FROM previous_application.DAYS_DECISION) AS decision_year, COUNT(previous_application.SK_ID_PREV) AS number_of_previous_applications, AVG(previous_application.AMT_CREDIT_SUM) AS average_credit_sum, AVG(previous_application.AMT_ANNUITY) AS average_annuity FROM previous_application GROUP BY decision_year ORDER BY decision_year LIMIT 100]\n(Background on this error at: https://sqlalche.me/e/20/f405)",
+      "generation_time": 4.397048473358154,
+      "expected_sql": "SELECT CAST(ABS(DAYS_DECISION)/365.25 AS INTEGER) AS years_ago, COUNT(SK_ID_PREV) AS application_count FROM previous_application GROUP BY years_ago ORDER BY years_ago ASC;",
+      "generated_sql": null,
+      "comparison": null
+    },
+    {
+      "test_id": 9,
+      "question": "Какова месячная динамика среднего показателя задолженности, зарегистрированной в БКИ?",
+      "success": false,
+      "error": "SQL generation failed after 2 attempts. Last error: (psycopg2.errors.UndefinedColumn) column b.bureau_loan_begin_date does not exist\nLINE 1: ...TRACT(MONTH FROM DATE_TRUNC('month', TO_TIMESTAMP(b.bureau_l...\n                                                             ^\n\n[SQL: EXPLAIN SELECT EXTRACT(MONTH FROM DATE_TRUNC('month', TO_TIMESTAMP(b.bureau_loan_begin_date, 'YYYY-MM-DD'))) AS loan_month, AVG(b.bureau_amount_due) AS average_amount_due FROM bureau AS b GROUP BY loan_month ORDER BY loan_month LIMIT 100]\n(Background on this error at: https://sqlalche.me/e/20/f405)",
+      "generation_time": 4.685686826705933,
+      "expected_sql": "SELECT bb.MONTHS_BALANCE, AVG(b.AMT_CREDIT_SUM_DEBT) AS avg_debt FROM bureau_balance bb JOIN bureau b ON bb.SK_BUREAU_ID = b.SK_BUREAU_ID GROUP BY bb.MONTHS_BALANCE ORDER BY bb.MONTHS_BALANCE ASC;",
+      "generated_sql": null,
+      "comparison": null
+    },
+    {
+      "test_id": 10,
+      "question": "Отобразите изменение среднего размера текущей кредитной задолженности, отраженной в кредитной истории, по месяцам баланса.",
+      "success": false,
+      "error": "SQL generation failed after 2 attempts. Last error: (psycopg2.errors.UndefinedColumn) column ccb.sk_id_bureau_balance does not exist\nLINE 1: ..._card_balance AS ccb JOIN bureau_balance AS cb ON ccb.SK_ID_...\n                                                             ^\n\n[SQL: EXPLAIN SELECT EXTRACT(MONTH FROM DATE(cb.MONTH_BALANCE)) AS month, AVG(ccb.AMT_CREDIT_LIMIT_ACTUAL) AS average_credit_limit FROM credit_card_balance AS ccb JOIN bureau_balance AS cb ON ccb.SK_ID_BUREAU_BALANCE = cb.SK_ID_BUREAU_BALANCE GROUP BY month ORDER BY month LIMIT 100]\n(Background on this error at: https://sqlalche.me/e/20/f405)",
+      "generation_time": 3.8118443489074707,
+      "expected_sql": "SELECT bb.MONTHS_BALANCE, AVG(b.AMT_CREDIT_SUM_DEBT) AS avg_debt FROM bureau_balance bb JOIN bureau b ON bb.SK_BUREAU_ID = b.SK_BUREAU_ID GROUP BY bb.MONTHS_BALANCE ORDER BY bb.MONTHS_BALANCE ASC;",
+      "generated_sql": null,
+      "comparison": null
+    }
+  ]
+}

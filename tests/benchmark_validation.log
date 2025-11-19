@@ -1,0 +1,886 @@
+2025-11-19 23:20:41,846 - __main__ - INFO - 📊 Загрузка бенчмарка: /home/dark/Documents/GitHub/SQL_Agent_proj/tests/benchmark_3000.json
+2025-11-19 23:20:41,862 - __main__ - INFO - ✅ Загружено 3000 примеров
+2025-11-19 23:20:41,862 - __main__ - INFO - 📝 Проверка первых 10 примеров
+2025-11-19 23:20:41,862 - __main__ - INFO - 🔧 Инициализация компонентов...
+2025-11-19 23:20:42,035 - core.database_adapter - INFO - Cached schema for 9 tables
+2025-11-19 23:20:42,959 - core.llm_manager - INFO - Initialized LLM Manager with gemini provider, model: models/gemini-2.5-flash-lite
+2025-11-19 23:20:42,959 - agents.orchestrator - INFO - [ORCHESTRATOR] Creating dynamic semantic layer...
+2025-11-19 23:20:42,959 - core.dynamic_semantic_layer - INFO - Auto-discovering database schema...
+2025-11-19 23:20:42,969 - core.dynamic_semantic_layer - INFO - Discovered 9 tables with 344 semantic mappings
+2025-11-19 23:20:42,969 - agents.orchestrator - INFO - [ORCHESTRATOR] Creating enhanced RAG system...
+2025-11-19 23:20:42,969 - core.enhanced_rag_system - INFO - Loading embedding model: all-MiniLM-L6-v2
+2025-11-19 23:20:43,032 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cuda:0
+2025-11-19 23:20:43,032 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-11-19 23:20:52,013 - chromadb.telemetry.product.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-11-19 23:20:52,016 - chromadb.telemetry.product.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-11-19 23:20:52,016 - core.enhanced_rag_system - INFO - Initialized Enhanced RAG system for postgresql
+2025-11-19 23:20:52,021 - core.enhanced_rag_system - INFO - Loading column descriptions from data/HomeCredit_columns_description.csv (encoding: latin-1)
+2025-11-19 23:20:52,036 - core.enhanced_rag_system - INFO - Loaded 219 column descriptions
+2025-11-19 23:20:52,048 - core.sql_generator - INFO - Initialized SQL Generator for postgresql
+2025-11-19 23:20:52,048 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Initialized for postgresql
+2025-11-19 23:20:52,048 - agents.analysis_agent - INFO - Initialized Analysis Agent (mode=hybrid)
+2025-11-19 23:20:52,048 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Инициализирован агент визуализации
+2025-11-19 23:20:52,048 - agents.orchestrator - INFO - [ORCHESTRATOR] Initialized with strict pipeline: Analysis → SQL+RAG → Visualization
+2025-11-19 23:20:52,049 - __main__ - INFO - 🚀 Начало валидации...
+2025-11-19 23:20:52,049 - __main__ - INFO - 
+[1/10] Валидация: Проанализируйте средний размер одобренного кредита по семейным статусам для сегм...
+2025-11-19 23:20:52,049 - agents.orchestrator - INFO - [ORCHESTRATOR] Received request: 'Проанализируйте средний размер одобренного кредита по семейным статусам для сегмента клиентов с высш...'
+2025-11-19 23:20:52,049 - agents.orchestrator - INFO - [ORCHESTRATOR] Context: none
+2025-11-19 23:20:53,046 - core.llm_manager - INFO - Generated response in 1.00s, tokens: 104
+2025-11-19 23:20:53,047 - agents.orchestrator - INFO - [ORCHESTRATOR] Russian detected, translated: 'Analyze the average approved loan size by marital status for the segment of clients with higher educ...'
+2025-11-19 23:20:53,047 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 1: ANALYSIS =====
+2025-11-19 23:20:53,047 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analyzing query intent...
+2025-11-19 23:20:53,935 - core.llm_manager - INFO - Generated response in 0.89s, tokens: 226
+2025-11-19 23:20:53,939 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analysis complete
+2025-11-19 23:20:53,940 - agents.orchestrator - INFO - [ORCHESTRATOR] Using refined query from analysis: Calculate the average approved loan size, grouped by marital status, for clients who have higher edu...
+2025-11-19 23:20:53,941 - agents.orchestrator - INFO - [ORCHESTRATOR] Refined prompt: 'Calculate the average approved loan size, grouped by marital status, for clients who have higher edu...'
+2025-11-19 23:20:53,941 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 2: SQL GENERATION WITH RAG =====
+2025-11-19 23:20:53,942 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Processing: 'Calculate the average approved loan size, grouped by marital status, for clients who have higher edu...'
+2025-11-19 23:20:53,942 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 2: Selecting relevant data...
+2025-11-19 23:20:54,382 - chromadb.telemetry.product.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-11-19 23:20:54,399 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 3: Generating SQL with LLM...
+2025-11-19 23:20:54,400 - core.sql_generator - INFO - [SQL_GEN] Generating SQL for: 'Calculate the average approved loan size, grouped by marital status, for clients who have higher edu...' with strategy: full_context
+2025-11-19 23:20:54,439 - core.sql_generator - INFO - [SQL_GEN] Attempt 1/4
+2025-11-19 23:20:55,467 - core.llm_manager - INFO - Generated response in 1.03s, tokens: 15687
+2025-11-19 23:20:55,475 - core.sql_generator - INFO - [SQL_GEN] Successfully generated SQL in 1.08s after 0 retries
+2025-11-19 23:20:55,475 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] SQL generated: confidence=0.55, retries=0
+2025-11-19 23:20:55,475 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 4: Executing SQL query...
+2025-11-19 23:20:55,857 - core.database_adapter - INFO - Query executed in 0.38s, returned 6 rows
+2025-11-19 23:20:55,857 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Query executed: 6 rows in 0.38s
+2025-11-19 23:20:55,879 - chromadb.telemetry.product.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-11-19 23:20:55,879 - core.enhanced_rag_system - INFO - Added 1 documents to RAG system
+2025-11-19 23:20:55,880 - core.dynamic_semantic_layer - INFO - Learned from query: 1 tables, feedback: None
+2025-11-19 23:20:55,880 - core.enhanced_rag_system - INFO - Learned from query execution: 6 rows in 0.38s
+2025-11-19 23:20:55,880 - core.dynamic_semantic_layer - INFO - Learned from query: 1 tables, feedback: successful
+2025-11-19 23:20:55,880 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Total processing time: 1.94s
+2025-11-19 23:20:55,881 - agents.orchestrator - INFO - [ORCHESTRATOR] SQL executed: rows=6, time=0.38s
+2025-11-19 23:20:55,881 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 3: VISUALIZATION =====
+2025-11-19 23:20:55,882 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Создание визуализации: rows=6, cols=2, question='Calculate the average approved loan size, grouped by marital...'
+2025-11-19 23:20:55,882 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] → Создание визуализации типа: True
+2025-11-19 23:20:56,140 - choreographer.browsers.chromium - INFO - Chromium init'ed with kwargs {}
+2025-11-19 23:20:56,143 - choreographer.browsers.chromium - INFO - Found chromium path: /usr/local/bin/chrome
+2025-11-19 23:20:56,143 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmpdj8sb1fn.
+2025-11-19 23:20:56,144 - choreographer.browser_async - INFO - Opening browser.
+2025-11-19 23:20:56,144 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmphkw27302.
+2025-11-19 23:20:56,151 - choreographer.browsers.chromium - INFO - ldd failed. e: Command '['ldd', '/usr/local/bin/chrome']' returned non-zero exit status 1., stderr: None
+2025-11-19 23:20:56,153 - choreographer.browsers.chromium - INFO - Temporary directory at: /tmp/tmphkw27302
+2025-11-19 23:20:56,677 - kaleido.kaleido - INFO - Conforming 1 to file:///tmp/tmpdj8sb1fn/index.html
+2025-11-19 23:20:56,678 - kaleido.kaleido - INFO - Waiting on all navigates
+2025-11-19 23:20:58,993 - kaleido.kaleido - INFO - All navigates done, putting them all in queue.
+2025-11-19 23:20:58,994 - kaleido.kaleido - INFO - Getting tab from queue (has 1)
+2025-11-19 23:20:58,994 - kaleido.kaleido - INFO - Got 1570
+2025-11-19 23:20:58,994 - kaleido._kaleido_tab - INFO - Processing avg_loan_size_by_name_family_status.png
+2025-11-19 23:20:58,994 - kaleido._kaleido_tab - INFO - Sending big command for avg_loan_size_by_name_family_status.png.
+2025-11-19 23:20:59,176 - kaleido._kaleido_tab - INFO - Sent big command for avg_loan_size_by_name_family_status.png.
+2025-11-19 23:20:59,177 - kaleido.kaleido - INFO - Reloading tab 1570 before return.
+2025-11-19 23:20:59,397 - kaleido.kaleido - INFO - Putting tab 1570 back (queue size: 0).
+2025-11-19 23:20:59,397 - kaleido.kaleido - INFO - Waiting for all cleanups to finish.
+2025-11-19 23:20:59,397 - kaleido.kaleido - INFO - Exiting Kaleido
+2025-11-19 23:20:59,398 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:20:59,400 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:20:59,400 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:20:59,400 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:20:59,400 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:20:59,400 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:20:59,580 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:20:59,580 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:20:59,580 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:20:59,580 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:20:59,581 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:20:59,581 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:20:59,587 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Визуализация создана: success=True, type=bar, image_size=41522 bytes
+2025-11-19 23:20:59,591 - agents.orchestrator - INFO - [ORCHESTRATOR] Visualization created: success=True, type=bar
+2025-11-19 23:20:59,591 - agents.orchestrator - INFO - [ORCHESTRATOR] Analyzing SQL results with AnalysisAgent...
+2025-11-19 23:20:59,591 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Начало анализа: question='Calculate the average approved loan size, grouped by marital...', rows=6, cols=2
+2025-11-19 23:20:59,601 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] → Генерация интерпретации через LLM
+2025-11-19 23:21:00,614 - core.llm_manager - INFO - Generated response in 1.01s, tokens: 702
+2025-11-19 23:21:00,614 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Интерпретация сгенерирована: 501 символов
+2025-11-19 23:21:00,615 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Анализ завершен: insights=0, recommendations=2, confidence=0.85
+2025-11-19 23:21:00,615 - agents.orchestrator - INFO - [ORCHESTRATOR] Result analysis complete: insights=0
+2025-11-19 23:21:00,616 - agents.orchestrator - INFO - [ORCHESTRATOR] Localizing result to Russian...
+2025-11-19 23:21:02,090 - core.llm_manager - INFO - Generated response in 1.47s, tokens: 405
+2025-11-19 23:21:03,002 - core.llm_manager - INFO - Generated response in 0.91s, tokens: 325
+2025-11-19 23:21:03,358 - core.llm_manager - INFO - Generated response in 0.36s, tokens: 62
+2025-11-19 23:21:04,834 - core.llm_manager - INFO - Generated response in 1.48s, tokens: 58
+2025-11-19 23:21:05,187 - core.llm_manager - INFO - Generated response in 0.35s, tokens: 106
+2025-11-19 23:21:05,191 - agents.orchestrator - INFO - [ORCHESTRATOR] Pipeline completed: success=True, task_type=visualization
+2025-11-19 23:21:07,905 - core.database_adapter - INFO - Query executed in 2.71s, returned 5 rows
+2025-11-19 23:21:07,905 - __main__ - INFO - 
+[2/10] Валидация: Сравнительный анализ среднего совокупного дохода для групп клиентов, обладающих ...
+2025-11-19 23:21:07,905 - agents.orchestrator - INFO - [ORCHESTRATOR] Received request: 'Сравнительный анализ среднего совокупного дохода для групп клиентов, обладающих автомобилем и не име...'
+2025-11-19 23:21:07,905 - agents.orchestrator - INFO - [ORCHESTRATOR] Context: none
+2025-11-19 23:21:08,458 - core.llm_manager - INFO - Generated response in 0.55s, tokens: 83
+2025-11-19 23:21:08,459 - agents.orchestrator - INFO - [ORCHESTRATOR] Russian detected, translated: 'Comparative analysis of average aggregate income for customer groups with and without a car....'
+2025-11-19 23:21:08,459 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 1: ANALYSIS =====
+2025-11-19 23:21:08,459 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analyzing query intent...
+2025-11-19 23:21:09,289 - core.llm_manager - INFO - Generated response in 0.83s, tokens: 209
+2025-11-19 23:21:09,289 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analysis complete
+2025-11-19 23:21:09,289 - agents.orchestrator - INFO - [ORCHESTRATOR] Using refined query from analysis: Calculate the average aggregate income for customer groups, segmented by whether they own a car or n...
+2025-11-19 23:21:09,289 - agents.orchestrator - INFO - [ORCHESTRATOR] Refined prompt: 'Calculate the average aggregate income for customer groups, segmented by whether they own a car or n...'
+2025-11-19 23:21:09,289 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 2: SQL GENERATION WITH RAG =====
+2025-11-19 23:21:09,291 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Processing: 'Calculate the average aggregate income for customer groups, segmented by whether they own a car or n...'
+2025-11-19 23:21:09,291 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 2: Selecting relevant data...
+2025-11-19 23:21:09,351 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 3: Generating SQL with LLM...
+2025-11-19 23:21:09,351 - core.sql_generator - INFO - [SQL_GEN] Generating SQL for: 'Calculate the average aggregate income for customer groups, segmented by whether they own a car or n...' with strategy: full_context
+2025-11-19 23:21:09,406 - core.sql_generator - INFO - [SQL_GEN] Attempt 1/4
+2025-11-19 23:21:10,729 - core.llm_manager - INFO - Generated response in 1.32s, tokens: 15479
+2025-11-19 23:21:10,732 - core.sql_generator - INFO - [SQL_GEN] Successfully generated SQL in 1.38s after 0 retries
+2025-11-19 23:21:10,732 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] SQL generated: confidence=0.55, retries=0
+2025-11-19 23:21:10,732 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 4: Executing SQL query...
+2025-11-19 23:21:11,166 - core.database_adapter - INFO - Query executed in 0.42s, returned 2 rows
+2025-11-19 23:21:11,166 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Query executed: 2 rows in 0.42s
+2025-11-19 23:21:11,201 - core.enhanced_rag_system - INFO - Added 1 documents to RAG system
+2025-11-19 23:21:11,201 - core.dynamic_semantic_layer - INFO - Learned from query: 1 tables, feedback: None
+2025-11-19 23:21:11,201 - core.enhanced_rag_system - INFO - Learned from query execution: 2 rows in 0.42s
+2025-11-19 23:21:11,201 - core.dynamic_semantic_layer - INFO - Learned from query: 1 tables, feedback: successful
+2025-11-19 23:21:11,201 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Total processing time: 1.91s
+2025-11-19 23:21:11,204 - agents.orchestrator - INFO - [ORCHESTRATOR] SQL executed: rows=2, time=0.42s
+2025-11-19 23:21:11,204 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 3: VISUALIZATION =====
+2025-11-19 23:21:11,204 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Создание визуализации: rows=2, cols=2, question='Calculate the average aggregate income for customer groups, ...'
+2025-11-19 23:21:11,204 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] → Создание визуализации типа: True
+2025-11-19 23:21:11,263 - choreographer.browsers.chromium - INFO - Chromium init'ed with kwargs {}
+2025-11-19 23:21:11,264 - choreographer.browsers.chromium - INFO - Found chromium path: /usr/local/bin/chrome
+2025-11-19 23:21:11,264 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmptu5hwsor.
+2025-11-19 23:21:11,265 - choreographer.browser_async - INFO - Opening browser.
+2025-11-19 23:21:11,265 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmp089vqxvm.
+2025-11-19 23:21:11,273 - choreographer.browsers.chromium - INFO - ldd failed. e: Command '['ldd', '/usr/local/bin/chrome']' returned non-zero exit status 1., stderr: None
+2025-11-19 23:21:11,273 - choreographer.browsers.chromium - INFO - Temporary directory at: /tmp/tmp089vqxvm
+2025-11-19 23:21:11,279 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:21:11,279 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:21:11,816 - kaleido.kaleido - INFO - Conforming 1 to file:///tmp/tmptu5hwsor/index.html
+2025-11-19 23:21:11,817 - kaleido.kaleido - INFO - Waiting on all navigates
+2025-11-19 23:21:13,797 - kaleido.kaleido - INFO - All navigates done, putting them all in queue.
+2025-11-19 23:21:13,797 - kaleido.kaleido - INFO - Getting tab from queue (has 1)
+2025-11-19 23:21:13,798 - kaleido.kaleido - INFO - Got 7B12
+2025-11-19 23:21:13,798 - kaleido._kaleido_tab - INFO - Processing avg_income_by_flag_own_car.png
+2025-11-19 23:21:13,798 - kaleido._kaleido_tab - INFO - Sending big command for avg_income_by_flag_own_car.png.
+2025-11-19 23:21:13,948 - kaleido._kaleido_tab - INFO - Sent big command for avg_income_by_flag_own_car.png.
+2025-11-19 23:21:13,949 - kaleido.kaleido - INFO - Reloading tab 7B12 before return.
+2025-11-19 23:21:14,152 - kaleido.kaleido - INFO - Putting tab 7B12 back (queue size: 0).
+2025-11-19 23:21:14,152 - kaleido.kaleido - INFO - Waiting for all cleanups to finish.
+2025-11-19 23:21:14,153 - kaleido.kaleido - INFO - Exiting Kaleido
+2025-11-19 23:21:14,153 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:21:14,155 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:21:14,155 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:21:14,155 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:21:14,156 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:21:14,156 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:21:14,333 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:21:14,333 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:21:14,334 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:21:14,334 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:21:14,335 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:21:14,335 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:21:14,343 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Визуализация создана: success=True, type=bar, image_size=24853 bytes
+2025-11-19 23:21:14,343 - agents.orchestrator - INFO - [ORCHESTRATOR] Visualization created: success=True, type=bar
+2025-11-19 23:21:14,343 - agents.orchestrator - INFO - [ORCHESTRATOR] Analyzing SQL results with AnalysisAgent...
+2025-11-19 23:21:14,343 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Начало анализа: question='Calculate the average aggregate income for customer groups, ...', rows=2, cols=2
+2025-11-19 23:21:14,351 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] → Генерация интерпретации через LLM
+2025-11-19 23:21:14,982 - core.llm_manager - INFO - Generated response in 0.63s, tokens: 586
+2025-11-19 23:21:14,982 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Интерпретация сгенерирована: 347 символов
+2025-11-19 23:21:14,983 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Анализ завершен: insights=0, recommendations=2, confidence=0.70
+2025-11-19 23:21:14,983 - agents.orchestrator - INFO - [ORCHESTRATOR] Result analysis complete: insights=0
+2025-11-19 23:21:14,983 - agents.orchestrator - INFO - [ORCHESTRATOR] Localizing result to Russian...
+2025-11-19 23:21:16,297 - core.llm_manager - INFO - Generated response in 1.31s, tokens: 299
+2025-11-19 23:21:17,515 - core.llm_manager - INFO - Generated response in 1.22s, tokens: 220
+2025-11-19 23:21:19,207 - core.llm_manager - INFO - Generated response in 1.69s, tokens: 62
+2025-11-19 23:21:20,334 - core.llm_manager - INFO - Generated response in 1.13s, tokens: 58
+2025-11-19 23:21:20,947 - core.llm_manager - INFO - Generated response in 0.61s, tokens: 98
+2025-11-19 23:21:20,948 - agents.orchestrator - INFO - [ORCHESTRATOR] Pipeline completed: success=True, task_type=visualization
+2025-11-19 23:21:21,444 - core.database_adapter - INFO - Query executed in 0.50s, returned 2 rows
+2025-11-19 23:21:21,444 - __main__ - INFO - 
+[3/10] Валидация: По таблице POS_CASH_balance рассчитайте среднее значение показателя DPD_DEF по P...
+2025-11-19 23:21:21,444 - agents.orchestrator - INFO - [ORCHESTRATOR] Received request: 'По таблице POS_CASH_balance рассчитайте среднее значение показателя DPD_DEF по POS-кредитам (SK_DPD_...'
+2025-11-19 23:21:21,444 - agents.orchestrator - INFO - [ORCHESTRATOR] Context: none
+2025-11-19 23:21:22,529 - core.llm_manager - INFO - Generated response in 1.08s, tokens: 127
+2025-11-19 23:21:22,530 - agents.orchestrator - INFO - [ORCHESTRATOR] Russian detected, translated: 'Using the POS_CASH_balance table, calculate the average DPD_DEF value (SK_DPD_DEF) for POS loans (SK...'
+2025-11-19 23:21:22,530 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 1: ANALYSIS =====
+2025-11-19 23:21:22,530 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analyzing query intent...
+2025-11-19 23:21:23,476 - core.llm_manager - INFO - Generated response in 0.95s, tokens: 234
+2025-11-19 23:21:23,477 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analysis complete
+2025-11-19 23:21:23,477 - agents.orchestrator - INFO - [ORCHESTRATOR] Using refined query from analysis: SELECT SK_ID_CURR, AVG(SK_DPD_DEF) FROM POS_CASH_balance WHERE DPD > 0 GROUP BY SK_ID_CURR...
+2025-11-19 23:21:23,477 - agents.orchestrator - INFO - [ORCHESTRATOR] Refined prompt: 'SELECT SK_ID_CURR, AVG(SK_DPD_DEF) FROM POS_CASH_balance WHERE DPD > 0 GROUP BY SK_ID_CURR...'
+2025-11-19 23:21:23,477 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 2: SQL GENERATION WITH RAG =====
+2025-11-19 23:21:23,477 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Processing: 'SELECT SK_ID_CURR, AVG(SK_DPD_DEF) FROM POS_CASH_balance WHERE DPD > 0 GROUP BY SK_ID_CURR...'
+2025-11-19 23:21:23,477 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 2: Selecting relevant data...
+2025-11-19 23:21:23,529 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 3: Generating SQL with LLM...
+2025-11-19 23:21:23,533 - core.sql_generator - INFO - [SQL_GEN] Generating SQL for: 'SELECT SK_ID_CURR, AVG(SK_DPD_DEF) FROM POS_CASH_balance WHERE DPD > 0 GROUP BY SK_ID_CURR...' with strategy: full_context
+2025-11-19 23:21:23,576 - core.sql_generator - INFO - [SQL_GEN] Attempt 1/4
+2025-11-19 23:21:24,473 - core.llm_manager - INFO - Generated response in 0.90s, tokens: 15930
+2025-11-19 23:21:24,564 - core.sql_generator - INFO - [SQL_GEN] Successfully generated SQL in 1.03s after 0 retries
+2025-11-19 23:21:24,564 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] SQL generated: confidence=0.55, retries=0
+2025-11-19 23:21:24,564 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 4: Executing SQL query...
+2025-11-19 23:21:28,990 - core.database_adapter - INFO - Query executed in 4.42s, returned 100 rows
+2025-11-19 23:21:28,990 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Query executed: 100 rows in 4.42s
+2025-11-19 23:21:29,018 - core.enhanced_rag_system - INFO - Added 1 documents to RAG system
+2025-11-19 23:21:29,018 - core.dynamic_semantic_layer - INFO - Learned from query: 1 tables, feedback: None
+2025-11-19 23:21:29,018 - core.enhanced_rag_system - INFO - Learned from query execution: 100 rows in 4.42s
+2025-11-19 23:21:29,018 - core.dynamic_semantic_layer - INFO - Learned from query: 1 tables, feedback: successful
+2025-11-19 23:21:29,018 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Total processing time: 5.54s
+2025-11-19 23:21:29,018 - agents.orchestrator - INFO - [ORCHESTRATOR] SQL executed: rows=100, time=4.42s
+2025-11-19 23:21:29,019 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 3: VISUALIZATION =====
+2025-11-19 23:21:29,019 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Создание визуализации: rows=100, cols=2, question='SELECT SK_ID_CURR, AVG(SK_DPD_DEF) FROM POS_CASH_balance WHE...'
+2025-11-19 23:21:29,019 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] → Создание визуализации типа: True
+2025-11-19 23:21:29,065 - choreographer.browsers.chromium - INFO - Chromium init'ed with kwargs {}
+2025-11-19 23:21:29,065 - choreographer.browsers.chromium - INFO - Found chromium path: /usr/local/bin/chrome
+2025-11-19 23:21:29,065 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmpw7voc1vx.
+2025-11-19 23:21:29,066 - choreographer.browser_async - INFO - Opening browser.
+2025-11-19 23:21:29,066 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmp0ff7y184.
+2025-11-19 23:21:29,074 - choreographer.browsers.chromium - INFO - ldd failed. e: Command '['ldd', '/usr/local/bin/chrome']' returned non-zero exit status 1., stderr: None
+2025-11-19 23:21:29,074 - choreographer.browsers.chromium - INFO - Temporary directory at: /tmp/tmp0ff7y184
+2025-11-19 23:21:29,526 - kaleido.kaleido - INFO - Conforming 1 to file:///tmp/tmpw7voc1vx/index.html
+2025-11-19 23:21:29,527 - kaleido.kaleido - INFO - Waiting on all navigates
+2025-11-19 23:21:31,649 - kaleido.kaleido - INFO - All navigates done, putting them all in queue.
+2025-11-19 23:21:31,650 - kaleido.kaleido - INFO - Getting tab from queue (has 1)
+2025-11-19 23:21:31,650 - kaleido.kaleido - INFO - Got 0AC2
+2025-11-19 23:21:31,651 - kaleido._kaleido_tab - INFO - Processing avg_sk_dpd_def_by_sk_id_curr.png
+2025-11-19 23:21:31,651 - kaleido._kaleido_tab - INFO - Sending big command for avg_sk_dpd_def_by_sk_id_curr.png.
+2025-11-19 23:21:31,838 - kaleido._kaleido_tab - INFO - Sent big command for avg_sk_dpd_def_by_sk_id_curr.png.
+2025-11-19 23:21:31,838 - kaleido.kaleido - INFO - Reloading tab 0AC2 before return.
+2025-11-19 23:21:32,038 - kaleido.kaleido - INFO - Putting tab 0AC2 back (queue size: 0).
+2025-11-19 23:21:32,038 - kaleido.kaleido - INFO - Waiting for all cleanups to finish.
+2025-11-19 23:21:32,038 - kaleido.kaleido - INFO - Exiting Kaleido
+2025-11-19 23:21:32,039 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:21:32,041 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:21:32,041 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:21:32,041 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:21:32,042 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:21:32,042 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:21:32,265 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:21:32,266 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:21:32,266 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:21:32,267 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:21:32,267 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:21:32,267 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:21:32,269 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Визуализация создана: success=True, type=bar, image_size=27243 bytes
+2025-11-19 23:21:32,270 - agents.orchestrator - INFO - [ORCHESTRATOR] Visualization created: success=True, type=bar
+2025-11-19 23:21:32,270 - agents.orchestrator - INFO - [ORCHESTRATOR] Analyzing SQL results with AnalysisAgent...
+2025-11-19 23:21:32,270 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Начало анализа: question='SELECT SK_ID_CURR, AVG(SK_DPD_DEF) FROM POS_CASH_balance WHE...', rows=100, cols=2
+2025-11-19 23:21:32,291 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] → Генерация интерпретации через LLM
+2025-11-19 23:21:33,538 - core.llm_manager - INFO - Generated response in 1.24s, tokens: 814
+2025-11-19 23:21:33,539 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Интерпретация сгенерирована: 523 символов
+2025-11-19 23:21:33,539 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Анализ завершен: insights=5, recommendations=2, confidence=1.00
+2025-11-19 23:21:33,540 - agents.orchestrator - INFO - [ORCHESTRATOR] Result analysis complete: insights=5
+2025-11-19 23:21:33,541 - agents.orchestrator - INFO - [ORCHESTRATOR] Localizing result to Russian...
+2025-11-19 23:21:34,736 - core.llm_manager - INFO - Generated response in 1.20s, tokens: 408
+2025-11-19 23:21:37,729 - core.llm_manager - INFO - Generated response in 2.99s, tokens: 323
+2025-11-19 23:21:38,540 - core.llm_manager - INFO - Generated response in 0.81s, tokens: 60
+2025-11-19 23:21:39,080 - core.llm_manager - INFO - Generated response in 0.54s, tokens: 56
+2025-11-19 23:21:39,535 - core.llm_manager - INFO - Generated response in 0.45s, tokens: 55
+2025-11-19 23:21:40,071 - core.llm_manager - INFO - Generated response in 0.54s, tokens: 59
+2025-11-19 23:21:41,266 - core.llm_manager - INFO - Generated response in 1.20s, tokens: 58
+2025-11-19 23:21:41,909 - core.llm_manager - INFO - Generated response in 0.64s, tokens: 68
+2025-11-19 23:21:42,258 - core.llm_manager - INFO - Generated response in 0.35s, tokens: 67
+2025-11-19 23:21:43,218 - core.llm_manager - INFO - Generated response in 0.96s, tokens: 93
+2025-11-19 23:21:43,218 - agents.orchestrator - INFO - [ORCHESTRATOR] Pipeline completed: success=True, task_type=visualization
+2025-11-19 23:21:46,672 - core.database_adapter - INFO - Query executed in 3.45s, returned 100 rows
+2025-11-19 23:21:46,673 - __main__ - INFO - 
+[4/10] Валидация: Постройте сложный SQL-запрос (WITH + JOIN) по previous_application и installment...
+2025-11-19 23:21:46,673 - agents.orchestrator - INFO - [ORCHESTRATOR] Received request: 'Постройте сложный SQL-запрос (WITH + JOIN) по previous_application и installments_payments, который ...'
+2025-11-19 23:21:46,673 - agents.orchestrator - INFO - [ORCHESTRATOR] Context: none
+2025-11-19 23:21:47,548 - core.llm_manager - INFO - Generated response in 0.87s, tokens: 194
+2025-11-19 23:21:47,549 - agents.orchestrator - INFO - [ORCHESTRATOR] Russian detected, translated: 'Construct a complex SQL query (WITH + JOIN) on `previous_application` and `installments_payments` to...'
+2025-11-19 23:21:47,549 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 1: ANALYSIS =====
+2025-11-19 23:21:47,549 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analyzing query intent...
+2025-11-19 23:21:48,774 - core.llm_manager - INFO - Generated response in 1.22s, tokens: 437
+2025-11-19 23:21:48,775 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analysis complete
+2025-11-19 23:21:48,775 - agents.orchestrator - INFO - [ORCHESTRATOR] Refined prompt: 'Construct a complex SQL query (WITH + JOIN) on `previous_application` and `installments_payments` to...'
+2025-11-19 23:21:48,775 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 2: SQL GENERATION WITH RAG =====
+2025-11-19 23:21:48,776 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Processing: 'Construct a complex SQL query (WITH + JOIN) on `previous_application` and `installments_payments` to...'
+2025-11-19 23:21:48,776 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 2: Selecting relevant data...
+2025-11-19 23:21:48,825 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 3: Generating SQL with LLM...
+2025-11-19 23:21:48,826 - core.sql_generator - INFO - [SQL_GEN] Generating SQL for: 'Construct a complex SQL query (WITH + JOIN) on `previous_application` and `installments_payments` to...' with strategy: full_context
+2025-11-19 23:21:48,857 - core.sql_generator - INFO - [SQL_GEN] Attempt 1/4
+2025-11-19 23:21:50,664 - core.llm_manager - INFO - Generated response in 1.81s, tokens: 1945
+2025-11-19 23:21:50,678 - core.sql_generator - INFO - [SQL_GEN] Successfully generated SQL in 1.85s after 0 retries
+2025-11-19 23:21:50,679 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] SQL generated: confidence=0.70, retries=0
+2025-11-19 23:21:50,679 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 4: Executing SQL query...
+2025-11-19 23:22:13,005 - core.database_adapter - INFO - Query executed in 22.32s, returned 2 rows
+2025-11-19 23:22:13,005 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Query executed: 2 rows in 22.32s
+2025-11-19 23:22:13,045 - core.enhanced_rag_system - INFO - Added 1 documents to RAG system
+2025-11-19 23:22:13,045 - core.dynamic_semantic_layer - INFO - Learned from query: 3 tables, feedback: None
+2025-11-19 23:22:13,045 - core.enhanced_rag_system - INFO - Learned from query execution: 2 rows in 22.32s
+2025-11-19 23:22:13,045 - core.dynamic_semantic_layer - INFO - Learned from query: 3 tables, feedback: successful
+2025-11-19 23:22:13,045 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Total processing time: 24.27s
+2025-11-19 23:22:13,046 - agents.orchestrator - INFO - [ORCHESTRATOR] SQL executed: rows=2, time=22.32s
+2025-11-19 23:22:13,046 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 3: VISUALIZATION =====
+2025-11-19 23:22:13,046 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Создание визуализации: rows=2, cols=2, question='Construct a complex SQL query (WITH + JOIN) on `previous_app...'
+2025-11-19 23:22:13,046 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] → Создание визуализации типа: True
+2025-11-19 23:22:13,081 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:22:13,081 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:22:13,091 - choreographer.browsers.chromium - INFO - Chromium init'ed with kwargs {}
+2025-11-19 23:22:13,092 - choreographer.browsers.chromium - INFO - Found chromium path: /usr/local/bin/chrome
+2025-11-19 23:22:13,092 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmpy5p2udo7.
+2025-11-19 23:22:13,092 - choreographer.browser_async - INFO - Opening browser.
+2025-11-19 23:22:13,093 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmpmn7hgsgw.
+2025-11-19 23:22:13,100 - choreographer.browsers.chromium - INFO - ldd failed. e: Command '['ldd', '/usr/local/bin/chrome']' returned non-zero exit status 1., stderr: None
+2025-11-19 23:22:13,100 - choreographer.browsers.chromium - INFO - Temporary directory at: /tmp/tmpmn7hgsgw
+2025-11-19 23:22:13,589 - kaleido.kaleido - INFO - Conforming 1 to file:///tmp/tmpy5p2udo7/index.html
+2025-11-19 23:22:13,589 - kaleido.kaleido - INFO - Waiting on all navigates
+2025-11-19 23:22:15,541 - kaleido.kaleido - INFO - All navigates done, putting them all in queue.
+2025-11-19 23:22:15,542 - kaleido.kaleido - INFO - Getting tab from queue (has 1)
+2025-11-19 23:22:15,542 - kaleido.kaleido - INFO - Got FAD2
+2025-11-19 23:22:15,542 - kaleido._kaleido_tab - INFO - Processing avg_delay_per_client_by_delinquency_indicator.png
+2025-11-19 23:22:15,542 - kaleido._kaleido_tab - INFO - Sending big command for avg_delay_per_client_by_delinquency_indicator.png.
+2025-11-19 23:22:15,668 - kaleido._kaleido_tab - INFO - Sent big command for avg_delay_per_client_by_delinquency_indicator.png.
+2025-11-19 23:22:15,668 - kaleido.kaleido - INFO - Reloading tab FAD2 before return.
+2025-11-19 23:22:15,826 - kaleido.kaleido - INFO - Putting tab FAD2 back (queue size: 0).
+2025-11-19 23:22:15,827 - kaleido.kaleido - INFO - Waiting for all cleanups to finish.
+2025-11-19 23:22:15,827 - kaleido.kaleido - INFO - Exiting Kaleido
+2025-11-19 23:22:15,827 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:22:15,828 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:22:15,830 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:22:15,830 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:22:15,831 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:22:15,834 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:22:16,005 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:22:16,005 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:22:16,005 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:22:16,006 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:22:16,006 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:22:16,006 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:22:16,008 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Визуализация создана: success=True, type=bar, image_size=27316 bytes
+2025-11-19 23:22:16,008 - agents.orchestrator - INFO - [ORCHESTRATOR] Visualization created: success=True, type=bar
+2025-11-19 23:22:16,009 - agents.orchestrator - INFO - [ORCHESTRATOR] Analyzing SQL results with AnalysisAgent...
+2025-11-19 23:22:16,009 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Начало анализа: question='Construct a complex SQL query (WITH + JOIN) on `previous_app...', rows=2, cols=2
+2025-11-19 23:22:16,020 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] → Генерация интерпретации через LLM
+2025-11-19 23:22:17,518 - core.llm_manager - INFO - Generated response in 1.50s, tokens: 901
+2025-11-19 23:22:17,518 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Интерпретация сгенерирована: 608 символов
+2025-11-19 23:22:17,518 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Анализ завершен: insights=2, recommendations=2, confidence=0.70
+2025-11-19 23:22:17,519 - agents.orchestrator - INFO - [ORCHESTRATOR] Result analysis complete: insights=2
+2025-11-19 23:22:17,519 - agents.orchestrator - INFO - [ORCHESTRATOR] Localizing result to Russian...
+2025-11-19 23:22:24,997 - core.llm_manager - INFO - Generated response in 7.48s, tokens: 401
+2025-11-19 23:22:26,172 - core.llm_manager - INFO - Generated response in 1.17s, tokens: 351
+2025-11-19 23:22:26,777 - core.llm_manager - INFO - Generated response in 0.60s, tokens: 61
+2025-11-19 23:22:27,226 - core.llm_manager - INFO - Generated response in 0.45s, tokens: 60
+2025-11-19 23:22:27,541 - core.llm_manager - INFO - Generated response in 0.31s, tokens: 62
+2025-11-19 23:22:28,101 - core.llm_manager - INFO - Generated response in 0.56s, tokens: 58
+2025-11-19 23:22:28,939 - core.llm_manager - INFO - Generated response in 0.84s, tokens: 231
+2025-11-19 23:22:28,939 - agents.orchestrator - INFO - [ORCHESTRATOR] Pipeline completed: success=True, task_type=visualization
+2025-11-19 23:23:05,090 - core.database_adapter - INFO - Query executed in 36.15s, returned 2 rows
+2025-11-19 23:23:05,090 - __main__ - INFO - 
+[5/10] Валидация: Когда к нам чаще всего обращаются за кредитами в течение дня?...
+2025-11-19 23:23:05,091 - agents.orchestrator - INFO - [ORCHESTRATOR] Received request: 'Когда к нам чаще всего обращаются за кредитами в течение дня?...'
+2025-11-19 23:23:05,091 - agents.orchestrator - INFO - [ORCHESTRATOR] Context: none
+2025-11-19 23:23:05,615 - core.llm_manager - INFO - Generated response in 0.52s, tokens: 62
+2025-11-19 23:23:05,615 - agents.orchestrator - INFO - [ORCHESTRATOR] Russian detected, translated: 'When do people most often apply for loans during the day?...'
+2025-11-19 23:23:05,615 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 1: ANALYSIS =====
+2025-11-19 23:23:05,616 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analyzing query intent...
+2025-11-19 23:23:06,369 - core.llm_manager - INFO - Generated response in 0.75s, tokens: 185
+2025-11-19 23:23:06,369 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analysis complete
+2025-11-19 23:23:06,370 - agents.orchestrator - INFO - [ORCHESTRATOR] Using refined query from analysis: Count of loan applications by hour of the day....
+2025-11-19 23:23:06,370 - agents.orchestrator - INFO - [ORCHESTRATOR] Refined prompt: 'Count of loan applications by hour of the day....'
+2025-11-19 23:23:06,370 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 2: SQL GENERATION WITH RAG =====
+2025-11-19 23:23:06,370 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Processing: 'Count of loan applications by hour of the day....'
+2025-11-19 23:23:06,370 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 2: Selecting relevant data...
+2025-11-19 23:23:06,485 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 3: Generating SQL with LLM...
+2025-11-19 23:23:06,485 - core.sql_generator - INFO - [SQL_GEN] Generating SQL for: 'Count of loan applications by hour of the day....' with strategy: full_context
+2025-11-19 23:23:06,512 - core.sql_generator - INFO - [SQL_GEN] Attempt 1/4
+2025-11-19 23:23:07,495 - core.llm_manager - INFO - Generated response in 0.98s, tokens: 3112
+2025-11-19 23:23:07,499 - core.sql_generator - INFO - [SQL_GEN] Successfully generated SQL in 1.01s after 0 retries
+2025-11-19 23:23:07,499 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] SQL generated: confidence=0.70, retries=0
+2025-11-19 23:23:07,499 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 4: Executing SQL query...
+2025-11-19 23:23:08,932 - core.database_adapter - INFO - Query executed in 1.43s, returned 24 rows
+2025-11-19 23:23:08,932 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Query executed: 24 rows in 1.43s
+2025-11-19 23:23:08,960 - core.enhanced_rag_system - INFO - Added 1 documents to RAG system
+2025-11-19 23:23:08,960 - core.dynamic_semantic_layer - INFO - Learned from query: 1 tables, feedback: None
+2025-11-19 23:23:08,960 - core.enhanced_rag_system - INFO - Learned from query execution: 24 rows in 1.43s
+2025-11-19 23:23:08,960 - core.dynamic_semantic_layer - INFO - Learned from query: 1 tables, feedback: successful
+2025-11-19 23:23:08,960 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Total processing time: 2.59s
+2025-11-19 23:23:08,961 - agents.orchestrator - INFO - [ORCHESTRATOR] SQL executed: rows=24, time=1.43s
+2025-11-19 23:23:08,961 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 3: VISUALIZATION =====
+2025-11-19 23:23:08,961 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Создание визуализации: rows=24, cols=2, question='Count of loan applications by hour of the day....'
+2025-11-19 23:23:08,961 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] → Создание визуализации типа: True
+2025-11-19 23:23:09,009 - choreographer.browsers.chromium - INFO - Chromium init'ed with kwargs {}
+2025-11-19 23:23:09,010 - choreographer.browsers.chromium - INFO - Found chromium path: /usr/local/bin/chrome
+2025-11-19 23:23:09,010 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmp6dpwn371.
+2025-11-19 23:23:09,010 - choreographer.browser_async - INFO - Opening browser.
+2025-11-19 23:23:09,011 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmpcv2qf32j.
+2025-11-19 23:23:09,019 - choreographer.browsers.chromium - INFO - ldd failed. e: Command '['ldd', '/usr/local/bin/chrome']' returned non-zero exit status 1., stderr: None
+2025-11-19 23:23:09,019 - choreographer.browsers.chromium - INFO - Temporary directory at: /tmp/tmpcv2qf32j
+2025-11-19 23:23:09,630 - kaleido.kaleido - INFO - Conforming 1 to file:///tmp/tmp6dpwn371/index.html
+2025-11-19 23:23:09,631 - kaleido.kaleido - INFO - Waiting on all navigates
+2025-11-19 23:23:11,817 - kaleido.kaleido - INFO - All navigates done, putting them all in queue.
+2025-11-19 23:23:11,818 - kaleido.kaleido - INFO - Getting tab from queue (has 1)
+2025-11-19 23:23:11,818 - kaleido.kaleido - INFO - Got C611
+2025-11-19 23:23:11,818 - kaleido._kaleido_tab - INFO - Processing loan_count_by_hour_appr_process_start.png
+2025-11-19 23:23:11,818 - kaleido._kaleido_tab - INFO - Sending big command for loan_count_by_hour_appr_process_start.png.
+2025-11-19 23:23:11,978 - kaleido._kaleido_tab - INFO - Sent big command for loan_count_by_hour_appr_process_start.png.
+2025-11-19 23:23:11,979 - kaleido.kaleido - INFO - Reloading tab C611 before return.
+2025-11-19 23:23:12,156 - kaleido.kaleido - INFO - Putting tab C611 back (queue size: 0).
+2025-11-19 23:23:12,156 - kaleido.kaleido - INFO - Waiting for all cleanups to finish.
+2025-11-19 23:23:12,156 - kaleido.kaleido - INFO - Exiting Kaleido
+2025-11-19 23:23:12,156 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:23:12,161 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:23:12,161 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:23:12,161 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:23:12,162 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:23:12,162 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:23:12,331 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:23:12,332 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:23:12,332 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:23:12,332 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:23:12,332 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:23:12,332 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:23:12,334 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Визуализация создана: success=True, type=bar, image_size=39207 bytes
+2025-11-19 23:23:12,335 - agents.orchestrator - INFO - [ORCHESTRATOR] Visualization created: success=True, type=bar
+2025-11-19 23:23:12,335 - agents.orchestrator - INFO - [ORCHESTRATOR] Analyzing SQL results with AnalysisAgent...
+2025-11-19 23:23:12,336 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Начало анализа: question='Count of loan applications by hour of the day....', rows=24, cols=2
+2025-11-19 23:23:12,353 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] → Генерация интерпретации через LLM
+2025-11-19 23:23:13,188 - core.llm_manager - INFO - Generated response in 0.83s, tokens: 774
+2025-11-19 23:23:13,188 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Интерпретация сгенерирована: 411 символов
+2025-11-19 23:23:13,188 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Анализ завершен: insights=3, recommendations=2, confidence=1.00
+2025-11-19 23:23:13,189 - agents.orchestrator - INFO - [ORCHESTRATOR] Result analysis complete: insights=3
+2025-11-19 23:23:13,190 - agents.orchestrator - INFO - [ORCHESTRATOR] Localizing result to Russian...
+2025-11-19 23:23:14,314 - core.llm_manager - INFO - Generated response in 1.12s, tokens: 345
+2025-11-19 23:23:15,236 - core.llm_manager - INFO - Generated response in 0.92s, tokens: 251
+2025-11-19 23:23:15,893 - core.llm_manager - INFO - Generated response in 0.66s, tokens: 54
+2025-11-19 23:23:16,638 - core.llm_manager - INFO - Generated response in 0.74s, tokens: 69
+2025-11-19 23:23:17,011 - core.llm_manager - INFO - Generated response in 0.37s, tokens: 57
+2025-11-19 23:23:17,528 - core.llm_manager - INFO - Generated response in 0.52s, tokens: 62
+2025-11-19 23:23:18,263 - core.llm_manager - INFO - Generated response in 0.74s, tokens: 58
+2025-11-19 23:23:19,099 - core.llm_manager - INFO - Generated response in 0.83s, tokens: 70
+2025-11-19 23:23:19,099 - agents.orchestrator - INFO - [ORCHESTRATOR] Pipeline completed: success=True, task_type=visualization
+2025-11-19 23:23:19,586 - core.database_adapter - INFO - Query executed in 0.49s, returned 24 rows
+2025-11-19 23:23:19,587 - __main__ - INFO - 
+[6/10] Валидация: Как в среднем изменяется первоначальный взнос по предыдущим кредитам для прошлых...
+2025-11-19 23:23:19,588 - agents.orchestrator - INFO - [ORCHESTRATOR] Received request: 'Как в среднем изменяется первоначальный взнос по предыдущим кредитам для прошлых кредитов среднего р...'
+2025-11-19 23:23:19,588 - agents.orchestrator - INFO - [ORCHESTRATOR] Context: none
+2025-11-19 23:23:20,049 - core.llm_manager - INFO - Generated response in 0.46s, tokens: 130
+2025-11-19 23:23:20,050 - agents.orchestrator - INFO - [ORCHESTRATOR] Russian detected, translated: 'On average, how does the initial down payment for previous loans of medium size ($10,000–$50,000) va...'
+2025-11-19 23:23:20,050 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 1: ANALYSIS =====
+2025-11-19 23:23:20,050 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analyzing query intent...
+2025-11-19 23:23:20,606 - core.llm_manager - INFO - Generated response in 0.56s, tokens: 245
+2025-11-19 23:23:20,606 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analysis complete
+2025-11-19 23:23:20,607 - agents.orchestrator - INFO - [ORCHESTRATOR] Using refined query from analysis: SELECT AVG(down_payment) AS average_down_payment, sales_channel FROM loans WHERE loan_size BETWEEN 1...
+2025-11-19 23:23:20,607 - agents.orchestrator - INFO - [ORCHESTRATOR] Refined prompt: 'SELECT AVG(down_payment) AS average_down_payment, sales_channel FROM loans WHERE loan_size BETWEEN 1...'
+2025-11-19 23:23:20,607 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 2: SQL GENERATION WITH RAG =====
+2025-11-19 23:23:20,608 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Processing: 'SELECT AVG(down_payment) AS average_down_payment, sales_channel FROM loans WHERE loan_size BETWEEN 1...'
+2025-11-19 23:23:20,608 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 2: Selecting relevant data...
+2025-11-19 23:23:20,661 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 3: Generating SQL with LLM...
+2025-11-19 23:23:20,662 - core.sql_generator - INFO - [SQL_GEN] Generating SQL for: 'SELECT AVG(down_payment) AS average_down_payment, sales_channel FROM loans WHERE loan_size BETWEEN 1...' with strategy: full_context
+2025-11-19 23:23:20,717 - core.sql_generator - INFO - [SQL_GEN] Attempt 1/4
+2025-11-19 23:23:21,569 - core.llm_manager - INFO - Generated response in 0.85s, tokens: 15986
+2025-11-19 23:23:21,580 - core.sql_generator - INFO - [SQL_GEN] Successfully generated SQL in 0.92s after 0 retries
+2025-11-19 23:23:21,580 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] SQL generated: confidence=0.55, retries=0
+2025-11-19 23:23:21,580 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 4: Executing SQL query...
+2025-11-19 23:23:23,217 - core.database_adapter - INFO - Query executed in 1.64s, returned 7 rows
+2025-11-19 23:23:23,217 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Query executed: 7 rows in 1.64s
+2025-11-19 23:23:23,219 - chromadb.telemetry.product.posthog - ERROR - Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+2025-11-19 23:23:23,219 - core.dynamic_semantic_layer - INFO - Learned from query: 1 tables, feedback: None
+2025-11-19 23:23:23,219 - core.enhanced_rag_system - INFO - Learned from query execution: 7 rows in 1.64s
+2025-11-19 23:23:23,219 - core.dynamic_semantic_layer - INFO - Learned from query: 1 tables, feedback: successful
+2025-11-19 23:23:23,219 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Total processing time: 2.61s
+2025-11-19 23:23:23,220 - agents.orchestrator - INFO - [ORCHESTRATOR] SQL executed: rows=7, time=1.64s
+2025-11-19 23:23:23,220 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 3: VISUALIZATION =====
+2025-11-19 23:23:23,220 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Создание визуализации: rows=7, cols=2, question='SELECT AVG(down_payment) AS average_down_payment, sales_chan...'
+2025-11-19 23:23:23,220 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] → Создание визуализации типа: True
+2025-11-19 23:23:23,267 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:23:23,268 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:23:23,268 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:23:23,268 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:23:23,278 - choreographer.browsers.chromium - INFO - Chromium init'ed with kwargs {}
+2025-11-19 23:23:23,278 - choreographer.browsers.chromium - INFO - Found chromium path: /usr/local/bin/chrome
+2025-11-19 23:23:23,279 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmpebcpr7p8.
+2025-11-19 23:23:23,279 - choreographer.browser_async - INFO - Opening browser.
+2025-11-19 23:23:23,279 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmpo_wdgkz7.
+2025-11-19 23:23:23,290 - choreographer.browsers.chromium - INFO - ldd failed. e: Command '['ldd', '/usr/local/bin/chrome']' returned non-zero exit status 1., stderr: None
+2025-11-19 23:23:23,290 - choreographer.browsers.chromium - INFO - Temporary directory at: /tmp/tmpo_wdgkz7
+2025-11-19 23:23:23,792 - kaleido.kaleido - INFO - Conforming 1 to file:///tmp/tmpebcpr7p8/index.html
+2025-11-19 23:23:23,792 - kaleido.kaleido - INFO - Waiting on all navigates
+2025-11-19 23:23:25,844 - kaleido.kaleido - INFO - All navigates done, putting them all in queue.
+2025-11-19 23:23:25,846 - kaleido.kaleido - INFO - Getting tab from queue (has 1)
+2025-11-19 23:23:25,846 - kaleido.kaleido - INFO - Got DA3E
+2025-11-19 23:23:25,847 - kaleido._kaleido_tab - INFO - Processing channel_type_by_average_down_payment.png
+2025-11-19 23:23:25,847 - kaleido._kaleido_tab - INFO - Sending big command for channel_type_by_average_down_payment.png.
+2025-11-19 23:23:26,016 - kaleido._kaleido_tab - INFO - Sent big command for channel_type_by_average_down_payment.png.
+2025-11-19 23:23:26,018 - kaleido.kaleido - INFO - Reloading tab DA3E before return.
+2025-11-19 23:23:26,184 - kaleido.kaleido - INFO - Putting tab DA3E back (queue size: 0).
+2025-11-19 23:23:26,184 - kaleido.kaleido - INFO - Waiting for all cleanups to finish.
+2025-11-19 23:23:26,185 - kaleido.kaleido - INFO - Exiting Kaleido
+2025-11-19 23:23:26,185 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:23:26,192 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:23:26,193 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:23:26,195 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:23:26,195 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:23:26,196 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:23:26,359 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:23:26,360 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:23:26,360 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:23:26,360 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:23:26,361 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:23:26,361 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:23:26,364 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Визуализация создана: success=True, type=bar, image_size=40650 bytes
+2025-11-19 23:23:26,366 - agents.orchestrator - INFO - [ORCHESTRATOR] Visualization created: success=True, type=bar
+2025-11-19 23:23:26,366 - agents.orchestrator - INFO - [ORCHESTRATOR] Analyzing SQL results with AnalysisAgent...
+2025-11-19 23:23:26,366 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Начало анализа: question='SELECT AVG(down_payment) AS average_down_payment, sales_chan...', rows=7, cols=2
+2025-11-19 23:23:26,372 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] → Генерация интерпретации через LLM
+2025-11-19 23:23:27,730 - core.llm_manager - INFO - Generated response in 1.36s, tokens: 873
+2025-11-19 23:23:27,731 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Интерпретация сгенерирована: 781 символов
+2025-11-19 23:23:27,731 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Анализ завершен: insights=2, recommendations=2, confidence=0.79
+2025-11-19 23:23:27,731 - agents.orchestrator - INFO - [ORCHESTRATOR] Result analysis complete: insights=2
+2025-11-19 23:23:27,732 - agents.orchestrator - INFO - [ORCHESTRATOR] Localizing result to Russian...
+2025-11-19 23:23:28,754 - core.llm_manager - INFO - Generated response in 1.02s, tokens: 401
+2025-11-19 23:23:30,420 - core.llm_manager - INFO - Generated response in 1.67s, tokens: 464
+2025-11-19 23:23:31,096 - core.llm_manager - INFO - Generated response in 0.68s, tokens: 60
+2025-11-19 23:23:31,945 - core.llm_manager - INFO - Generated response in 0.85s, tokens: 72
+2025-11-19 23:23:32,492 - core.llm_manager - INFO - Generated response in 0.55s, tokens: 62
+2025-11-19 23:23:34,940 - core.llm_manager - INFO - Generated response in 2.45s, tokens: 58
+2025-11-19 23:23:35,391 - core.llm_manager - INFO - Generated response in 0.45s, tokens: 116
+2025-11-19 23:23:35,392 - agents.orchestrator - INFO - [ORCHESTRATOR] Pipeline completed: success=True, task_type=visualization
+2025-11-19 23:23:37,108 - core.database_adapter - INFO - Query executed in 1.72s, returned 7 rows
+2025-11-19 23:23:37,108 - __main__ - INFO - 
+[7/10] Валидация: Сделайте агрегированный срез по credit_card_balance: для карт без текущего остат...
+2025-11-19 23:23:37,108 - agents.orchestrator - INFO - [ORCHESTRATOR] Received request: 'Сделайте агрегированный срез по credit_card_balance: для карт без текущего остатка (AMT_BALANCE = 0)...'
+2025-11-19 23:23:37,108 - agents.orchestrator - INFO - [ORCHESTRATOR] Context: none
+2025-11-19 23:23:37,582 - core.llm_manager - INFO - Generated response in 0.47s, tokens: 135
+2025-11-19 23:23:37,582 - agents.orchestrator - INFO - [ORCHESTRATOR] Russian detected, translated: 'Create an aggregated slice for credit_card_balance: for cards with no current balance (AMT_BALANCE =...'
+2025-11-19 23:23:37,583 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 1: ANALYSIS =====
+2025-11-19 23:23:37,583 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analyzing query intent...
+2025-11-19 23:23:38,343 - core.llm_manager - INFO - Generated response in 0.76s, tokens: 254
+2025-11-19 23:23:38,344 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analysis complete
+2025-11-19 23:23:38,344 - agents.orchestrator - INFO - [ORCHESTRATOR] Using refined query from analysis: SELECT MONTHS_BALANCE, AVG(AMT_PAYMENT_CURRENT) FROM credit_card_balance WHERE AMT_BALANCE = 0 GROUP...
+2025-11-19 23:23:38,344 - agents.orchestrator - INFO - [ORCHESTRATOR] Refined prompt: 'SELECT MONTHS_BALANCE, AVG(AMT_PAYMENT_CURRENT) FROM credit_card_balance WHERE AMT_BALANCE = 0 GROUP...'
+2025-11-19 23:23:38,344 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 2: SQL GENERATION WITH RAG =====
+2025-11-19 23:23:38,344 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Processing: 'SELECT MONTHS_BALANCE, AVG(AMT_PAYMENT_CURRENT) FROM credit_card_balance WHERE AMT_BALANCE = 0 GROUP...'
+2025-11-19 23:23:38,344 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 2: Selecting relevant data...
+2025-11-19 23:23:38,402 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 3: Generating SQL with LLM...
+2025-11-19 23:23:38,403 - core.sql_generator - INFO - [SQL_GEN] Generating SQL for: 'SELECT MONTHS_BALANCE, AVG(AMT_PAYMENT_CURRENT) FROM credit_card_balance WHERE AMT_BALANCE = 0 GROUP...' with strategy: full_context
+2025-11-19 23:23:38,438 - core.sql_generator - INFO - [SQL_GEN] Attempt 1/4
+2025-11-19 23:23:38,853 - core.llm_manager - INFO - Generated response in 0.41s, tokens: 1009
+2025-11-19 23:23:38,859 - core.sql_generator - INFO - [SQL_GEN] Successfully generated SQL in 0.46s after 0 retries
+2025-11-19 23:23:38,859 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] SQL generated: confidence=0.55, retries=0
+2025-11-19 23:23:38,859 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 4: Executing SQL query...
+2025-11-19 23:23:43,152 - core.database_adapter - INFO - Query executed in 4.28s, returned 96 rows
+2025-11-19 23:23:43,152 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Query executed: 96 rows in 4.28s
+2025-11-19 23:23:43,181 - core.enhanced_rag_system - INFO - Added 1 documents to RAG system
+2025-11-19 23:23:43,181 - core.dynamic_semantic_layer - INFO - Learned from query: 1 tables, feedback: None
+2025-11-19 23:23:43,182 - core.enhanced_rag_system - INFO - Learned from query execution: 96 rows in 4.28s
+2025-11-19 23:23:43,182 - core.dynamic_semantic_layer - INFO - Learned from query: 1 tables, feedback: successful
+2025-11-19 23:23:43,182 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Total processing time: 4.84s
+2025-11-19 23:23:43,182 - agents.orchestrator - INFO - [ORCHESTRATOR] SQL executed: rows=96, time=4.28s
+2025-11-19 23:23:43,182 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 3: VISUALIZATION =====
+2025-11-19 23:23:43,183 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Создание визуализации: rows=96, cols=2, question='SELECT MONTHS_BALANCE, AVG(AMT_PAYMENT_CURRENT) FROM credit_...'
+2025-11-19 23:23:43,183 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] → Создание визуализации типа: True
+2025-11-19 23:23:43,241 - choreographer.browsers.chromium - INFO - Chromium init'ed with kwargs {}
+2025-11-19 23:23:43,242 - choreographer.browsers.chromium - INFO - Found chromium path: /usr/local/bin/chrome
+2025-11-19 23:23:43,243 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmp_ysd7g_o.
+2025-11-19 23:23:43,244 - choreographer.browser_async - INFO - Opening browser.
+2025-11-19 23:23:43,244 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmpen7bho52.
+2025-11-19 23:23:43,255 - choreographer.browsers.chromium - INFO - ldd failed. e: Command '['ldd', '/usr/local/bin/chrome']' returned non-zero exit status 1., stderr: None
+2025-11-19 23:23:43,255 - choreographer.browsers.chromium - INFO - Temporary directory at: /tmp/tmpen7bho52
+2025-11-19 23:23:43,768 - kaleido.kaleido - INFO - Conforming 1 to file:///tmp/tmp_ysd7g_o/index.html
+2025-11-19 23:23:43,768 - kaleido.kaleido - INFO - Waiting on all navigates
+2025-11-19 23:23:45,833 - kaleido.kaleido - INFO - All navigates done, putting them all in queue.
+2025-11-19 23:23:45,834 - kaleido.kaleido - INFO - Getting tab from queue (has 1)
+2025-11-19 23:23:45,836 - kaleido.kaleido - INFO - Got 5632
+2025-11-19 23:23:45,836 - kaleido._kaleido_tab - INFO - Processing avg_amt_payment_current_by_months_balance.png
+2025-11-19 23:23:45,836 - kaleido._kaleido_tab - INFO - Sending big command for avg_amt_payment_current_by_months_balance.png.
+2025-11-19 23:23:45,996 - kaleido._kaleido_tab - INFO - Sent big command for avg_amt_payment_current_by_months_balance.png.
+2025-11-19 23:23:45,998 - kaleido.kaleido - INFO - Reloading tab 5632 before return.
+2025-11-19 23:23:46,189 - kaleido.kaleido - INFO - Putting tab 5632 back (queue size: 0).
+2025-11-19 23:23:46,189 - kaleido.kaleido - INFO - Waiting for all cleanups to finish.
+2025-11-19 23:23:46,189 - kaleido.kaleido - INFO - Exiting Kaleido
+2025-11-19 23:23:46,189 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:23:46,194 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:23:46,195 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:23:46,195 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:23:46,195 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:23:46,195 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:23:46,414 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:23:46,417 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:23:46,417 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:23:46,417 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:23:46,418 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:23:46,418 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:23:46,420 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Визуализация создана: success=True, type=bar, image_size=46178 bytes
+2025-11-19 23:23:46,420 - agents.orchestrator - INFO - [ORCHESTRATOR] Visualization created: success=True, type=bar
+2025-11-19 23:23:46,421 - agents.orchestrator - INFO - [ORCHESTRATOR] Analyzing SQL results with AnalysisAgent...
+2025-11-19 23:23:46,421 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Начало анализа: question='SELECT MONTHS_BALANCE, AVG(AMT_PAYMENT_CURRENT) FROM credit_...', rows=96, cols=2
+2025-11-19 23:23:46,434 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] → Генерация интерпретации через LLM
+2025-11-19 23:23:47,534 - core.llm_manager - INFO - Generated response in 1.10s, tokens: 910
+2025-11-19 23:23:47,534 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Интерпретация сгенерирована: 454 символов
+2025-11-19 23:23:47,534 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Анализ завершен: insights=5, recommendations=2, confidence=1.00
+2025-11-19 23:23:47,536 - agents.orchestrator - INFO - [ORCHESTRATOR] Result analysis complete: insights=5
+2025-11-19 23:23:47,537 - agents.orchestrator - INFO - [ORCHESTRATOR] Localizing result to Russian...
+2025-11-19 23:23:48,613 - core.llm_manager - INFO - Generated response in 1.08s, tokens: 369
+2025-11-19 23:23:49,940 - core.llm_manager - INFO - Generated response in 1.32s, tokens: 264
+2025-11-19 23:23:50,305 - core.llm_manager - INFO - Generated response in 0.36s, tokens: 60
+2025-11-19 23:23:51,123 - core.llm_manager - INFO - Generated response in 0.82s, tokens: 59
+2025-11-19 23:23:52,526 - core.llm_manager - INFO - Generated response in 1.40s, tokens: 63
+2025-11-19 23:23:53,935 - core.llm_manager - INFO - Generated response in 1.41s, tokens: 63
+2025-11-19 23:23:54,353 - core.llm_manager - INFO - Generated response in 0.42s, tokens: 75
+2025-11-19 23:23:55,966 - core.llm_manager - INFO - Generated response in 1.61s, tokens: 67
+2025-11-19 23:23:57,440 - core.llm_manager - INFO - Generated response in 1.47s, tokens: 70
+2025-11-19 23:23:58,563 - core.llm_manager - INFO - Generated response in 1.12s, tokens: 107
+2025-11-19 23:23:58,563 - agents.orchestrator - INFO - [ORCHESTRATOR] Pipeline completed: success=True, task_type=visualization
+2025-11-19 23:24:01,999 - core.database_adapter - INFO - Query executed in 3.44s, returned 96 rows
+2025-11-19 23:24:01,999 - __main__ - INFO - 
+[8/10] Валидация: В среднем, насколько сильно люди используют свои кредитные лимиты по картам?...
+2025-11-19 23:24:02,000 - agents.orchestrator - INFO - [ORCHESTRATOR] Received request: 'В среднем, насколько сильно люди используют свои кредитные лимиты по картам?...'
+2025-11-19 23:24:02,000 - agents.orchestrator - INFO - [ORCHESTRATOR] Context: none
+2025-11-19 23:24:02,512 - core.llm_manager - INFO - Generated response in 0.51s, tokens: 66
+2025-11-19 23:24:02,516 - agents.orchestrator - INFO - [ORCHESTRATOR] Russian detected, translated: 'On average, how much do people use their credit card limits?...'
+2025-11-19 23:24:02,516 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 1: ANALYSIS =====
+2025-11-19 23:24:02,516 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analyzing query intent...
+2025-11-19 23:24:03,556 - core.llm_manager - INFO - Generated response in 1.04s, tokens: 195
+2025-11-19 23:24:03,557 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analysis complete
+2025-11-19 23:24:03,557 - agents.orchestrator - INFO - [ORCHESTRATOR] Using refined query from analysis: Calculate the average credit card utilization rate for all users....
+2025-11-19 23:24:03,557 - agents.orchestrator - INFO - [ORCHESTRATOR] Refined prompt: 'Calculate the average credit card utilization rate for all users....'
+2025-11-19 23:24:03,557 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 2: SQL GENERATION WITH RAG =====
+2025-11-19 23:24:03,558 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Processing: 'Calculate the average credit card utilization rate for all users....'
+2025-11-19 23:24:03,558 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 2: Selecting relevant data...
+2025-11-19 23:24:03,610 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 3: Generating SQL with LLM...
+2025-11-19 23:24:03,610 - core.sql_generator - INFO - [SQL_GEN] Generating SQL for: 'Calculate the average credit card utilization rate for all users....' with strategy: full_context
+2025-11-19 23:24:03,645 - core.sql_generator - INFO - [SQL_GEN] Attempt 1/4
+2025-11-19 23:24:04,946 - core.llm_manager - INFO - Generated response in 1.30s, tokens: 2365
+2025-11-19 23:24:04,952 - core.sql_generator - INFO - [SQL_GEN] Successfully generated SQL in 1.34s after 0 retries
+2025-11-19 23:24:04,952 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] SQL generated: confidence=0.70, retries=0
+2025-11-19 23:24:04,954 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 4: Executing SQL query...
+2025-11-19 23:24:04,960 - core.database_adapter - ERROR - Query execution failed: (psycopg2.errors.DivisionByZero) division by zero
+
+[SQL: SELECT AVG(CAST(amt_balance AS numeric) / CAST(amt_credit_limit_actual AS numeric)) AS avg_utilization_rate FROM credit_card_balance LIMIT 100]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2025-11-19 23:24:04,962 - agents.enhanced_sql_agent - ERROR - [ENHANCED_SQL_AGENT] Error processing question: (psycopg2.errors.DivisionByZero) division by zero
+
+[SQL: SELECT AVG(CAST(amt_balance AS numeric) / CAST(amt_credit_limit_actual AS numeric)) AS avg_utilization_rate FROM credit_card_balance LIMIT 100]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+Traceback (most recent call last):
+  File "/home/dark/.local/share/mamba/envs/sqltg/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/dark/.local/share/mamba/envs/sqltg/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.DivisionByZero: division by zero
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dark/Documents/GitHub/SQL_Agent_proj/agents/enhanced_sql_agent.py", line 221, in process_question
+    data = self.db_adapter.execute_query(optimized_sql)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dark/Documents/GitHub/SQL_Agent_proj/core/database_adapter.py", line 250, in execute_query
+    result = pd.read_sql_query(query, conn)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dark/.local/share/mamba/envs/sqltg/lib/python3.11/site-packages/pandas/io/sql.py", line 486, in read_sql_query
+    return pandas_sql.read_query(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dark/.local/share/mamba/envs/sqltg/lib/python3.11/site-packages/pandas/io/sql.py", line 1776, in read_query
+    result = self.execute(sql, params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dark/.local/share/mamba/envs/sqltg/lib/python3.11/site-packages/pandas/io/sql.py", line 1599, in execute
+    return self.con.exec_driver_sql(sql, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dark/.local/share/mamba/envs/sqltg/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1778, in exec_driver_sql
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dark/.local/share/mamba/envs/sqltg/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dark/.local/share/mamba/envs/sqltg/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/dark/.local/share/mamba/envs/sqltg/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2343, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/dark/.local/share/mamba/envs/sqltg/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/dark/.local/share/mamba/envs/sqltg/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.errors.DivisionByZero) division by zero
+
+[SQL: SELECT AVG(CAST(amt_balance AS numeric) / CAST(amt_credit_limit_actual AS numeric)) AS avg_utilization_rate FROM credit_card_balance LIMIT 100]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2025-11-19 23:24:04,967 - agents.orchestrator - ERROR - [ORCHESTRATOR] SQL generation failed: (psycopg2.errors.DivisionByZero) division by zero
+
+[SQL: SELECT AVG(CAST(amt_balance AS numeric) / CAST(amt_credit_limit_actual AS numeric)) AS avg_utilization_rate FROM credit_card_balance LIMIT 100]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2025-11-19 23:24:04,968 - __main__ - INFO - 
+[9/10] Валидация: Какой день недели демонстрирует наибольшую/наименьшую частоту одобрения или отка...
+2025-11-19 23:24:04,968 - agents.orchestrator - INFO - [ORCHESTRATOR] Received request: 'Какой день недели демонстрирует наибольшую/наименьшую частоту одобрения или отказа по кредитным заяв...'
+2025-11-19 23:24:04,968 - agents.orchestrator - INFO - [ORCHESTRATOR] Context: none
+2025-11-19 23:24:05,555 - core.llm_manager - INFO - Generated response in 0.59s, tokens: 83
+2025-11-19 23:24:05,555 - agents.orchestrator - INFO - [ORCHESTRATOR] Russian detected, translated: 'Which day of the week shows the highest/lowest frequency of credit application approval or rejection...'
+2025-11-19 23:24:05,555 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 1: ANALYSIS =====
+2025-11-19 23:24:05,555 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analyzing query intent...
+2025-11-19 23:24:06,238 - core.llm_manager - INFO - Generated response in 0.68s, tokens: 256
+2025-11-19 23:24:06,239 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analysis complete
+2025-11-19 23:24:06,239 - agents.orchestrator - INFO - [ORCHESTRATOR] Using refined query from analysis: For each day of the week, count the number of credit applications approved and rejected. Then, compa...
+2025-11-19 23:24:06,239 - agents.orchestrator - INFO - [ORCHESTRATOR] Refined prompt: 'For each day of the week, count the number of credit applications approved and rejected. Then, compa...'
+2025-11-19 23:24:06,239 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 2: SQL GENERATION WITH RAG =====
+2025-11-19 23:24:06,239 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Processing: 'For each day of the week, count the number of credit applications approved and rejected. Then, compa...'
+2025-11-19 23:24:06,240 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 2: Selecting relevant data...
+2025-11-19 23:24:06,287 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 3: Generating SQL with LLM...
+2025-11-19 23:24:06,287 - core.sql_generator - INFO - [SQL_GEN] Generating SQL for: 'For each day of the week, count the number of credit applications approved and rejected. Then, compa...' with strategy: full_context
+2025-11-19 23:24:06,332 - core.sql_generator - INFO - [SQL_GEN] Attempt 1/4
+2025-11-19 23:24:07,532 - core.llm_manager - INFO - Generated response in 1.20s, tokens: 4263
+2025-11-19 23:24:07,537 - core.sql_generator - INFO - [SQL_GEN] Successfully generated SQL in 1.25s after 0 retries
+2025-11-19 23:24:07,537 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] SQL generated: confidence=0.70, retries=0
+2025-11-19 23:24:07,537 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 4: Executing SQL query...
+2025-11-19 23:24:09,521 - core.database_adapter - INFO - Query executed in 1.98s, returned 7 rows
+2025-11-19 23:24:09,522 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Query executed: 7 rows in 1.98s
+2025-11-19 23:24:09,554 - core.enhanced_rag_system - INFO - Added 1 documents to RAG system
+2025-11-19 23:24:09,554 - core.dynamic_semantic_layer - INFO - Learned from query: 1 tables, feedback: None
+2025-11-19 23:24:09,554 - core.enhanced_rag_system - INFO - Learned from query execution: 7 rows in 1.98s
+2025-11-19 23:24:09,554 - core.dynamic_semantic_layer - INFO - Learned from query: 1 tables, feedback: successful
+2025-11-19 23:24:09,555 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Total processing time: 3.32s
+2025-11-19 23:24:09,555 - agents.orchestrator - INFO - [ORCHESTRATOR] SQL executed: rows=7, time=1.98s
+2025-11-19 23:24:09,555 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 3: VISUALIZATION =====
+2025-11-19 23:24:09,555 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Создание визуализации: rows=7, cols=3, question='For each day of the week, count the number of credit applica...'
+2025-11-19 23:24:09,555 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] → Создание визуализации типа: True
+2025-11-19 23:24:09,590 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:24:09,591 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:24:09,591 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:24:09,591 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:24:09,601 - choreographer.browsers.chromium - INFO - Chromium init'ed with kwargs {}
+2025-11-19 23:24:09,601 - choreographer.browsers.chromium - INFO - Found chromium path: /usr/local/bin/chrome
+2025-11-19 23:24:09,602 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmpdo37lmc5.
+2025-11-19 23:24:09,602 - choreographer.browser_async - INFO - Opening browser.
+2025-11-19 23:24:09,602 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmpd4i94j3e.
+2025-11-19 23:24:09,610 - choreographer.browsers.chromium - INFO - ldd failed. e: Command '['ldd', '/usr/local/bin/chrome']' returned non-zero exit status 1., stderr: None
+2025-11-19 23:24:09,611 - choreographer.browsers.chromium - INFO - Temporary directory at: /tmp/tmpd4i94j3e
+2025-11-19 23:24:10,125 - kaleido.kaleido - INFO - Conforming 1 to file:///tmp/tmpdo37lmc5/index.html
+2025-11-19 23:24:10,125 - kaleido.kaleido - INFO - Waiting on all navigates
+2025-11-19 23:24:12,028 - kaleido.kaleido - INFO - All navigates done, putting them all in queue.
+2025-11-19 23:24:12,030 - kaleido.kaleido - INFO - Getting tab from queue (has 1)
+2025-11-19 23:24:12,031 - kaleido.kaleido - INFO - Got 99FC
+2025-11-19 23:24:12,031 - kaleido._kaleido_tab - INFO - Processing approved_count_by_weekday_appr_process_start.png
+2025-11-19 23:24:12,031 - kaleido._kaleido_tab - INFO - Sending big command for approved_count_by_weekday_appr_process_start.png.
+2025-11-19 23:24:12,216 - kaleido._kaleido_tab - INFO - Sent big command for approved_count_by_weekday_appr_process_start.png.
+2025-11-19 23:24:12,217 - kaleido.kaleido - INFO - Reloading tab 99FC before return.
+2025-11-19 23:24:12,388 - kaleido.kaleido - INFO - Putting tab 99FC back (queue size: 0).
+2025-11-19 23:24:12,388 - kaleido.kaleido - INFO - Waiting for all cleanups to finish.
+2025-11-19 23:24:12,388 - kaleido.kaleido - INFO - Exiting Kaleido
+2025-11-19 23:24:12,388 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:24:12,393 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:24:12,393 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:24:12,394 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:24:12,394 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:24:12,394 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:24:12,566 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:24:12,566 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:24:12,566 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:24:12,566 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:24:12,566 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:24:12,567 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:24:12,570 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Визуализация создана: success=True, type=bar, image_size=34009 bytes
+2025-11-19 23:24:12,570 - agents.orchestrator - INFO - [ORCHESTRATOR] Visualization created: success=True, type=bar
+2025-11-19 23:24:12,570 - agents.orchestrator - INFO - [ORCHESTRATOR] Analyzing SQL results with AnalysisAgent...
+2025-11-19 23:24:12,570 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Начало анализа: question='For each day of the week, count the number of credit applica...', rows=7, cols=3
+2025-11-19 23:24:12,584 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] → Генерация интерпретации через LLM
+2025-11-19 23:24:13,619 - core.llm_manager - INFO - Generated response in 1.03s, tokens: 843
+2025-11-19 23:24:13,620 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Интерпретация сгенерирована: 425 символов
+2025-11-19 23:24:13,620 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Анализ завершен: insights=0, recommendations=2, confidence=0.85
+2025-11-19 23:24:13,621 - agents.orchestrator - INFO - [ORCHESTRATOR] Result analysis complete: insights=0
+2025-11-19 23:24:13,621 - agents.orchestrator - INFO - [ORCHESTRATOR] Localizing result to Russian...
+2025-11-19 23:24:15,332 - core.llm_manager - INFO - Generated response in 1.71s, tokens: 351
+2025-11-19 23:24:15,984 - core.llm_manager - INFO - Generated response in 0.65s, tokens: 253
+2025-11-19 23:24:16,717 - core.llm_manager - INFO - Generated response in 0.73s, tokens: 62
+2025-11-19 23:24:17,064 - core.llm_manager - INFO - Generated response in 0.35s, tokens: 58
+2025-11-19 23:24:17,580 - core.llm_manager - INFO - Generated response in 0.52s, tokens: 161
+2025-11-19 23:24:17,580 - agents.orchestrator - INFO - [ORCHESTRATOR] Pipeline completed: success=True, task_type=visualization
+2025-11-19 23:24:19,925 - core.database_adapter - INFO - Query executed in 2.34s, returned 7 rows
+2025-11-19 23:24:19,925 - __main__ - INFO - 
+[10/10] Валидация: Какова разница в среднем уровне дохода (AMT_INCOME_TOTAL) между клиентами, склон...
+2025-11-19 23:24:19,926 - agents.orchestrator - INFO - [ORCHESTRATOR] Received request: 'Какова разница в среднем уровне дохода (AMT_INCOME_TOTAL) между клиентами, склонными к дефолту, и те...'
+2025-11-19 23:24:19,926 - agents.orchestrator - INFO - [ORCHESTRATOR] Context: none
+2025-11-19 23:24:22,011 - core.llm_manager - INFO - Generated response in 2.08s, tokens: 97
+2025-11-19 23:24:22,012 - agents.orchestrator - INFO - [ORCHESTRATOR] Russian detected, translated: 'What is the difference in the average income level (AMT_INCOME_TOTAL) between customers who are pron...'
+2025-11-19 23:24:22,012 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 1: ANALYSIS =====
+2025-11-19 23:24:22,012 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analyzing query intent...
+2025-11-19 23:24:22,827 - core.llm_manager - INFO - Generated response in 0.81s, tokens: 223
+2025-11-19 23:24:22,828 - agents.orchestrator - INFO - [ORCHESTRATOR] [ANALYSIS] Analysis complete
+2025-11-19 23:24:22,828 - agents.orchestrator - INFO - [ORCHESTRATOR] Using refined query from analysis: Calculate the average AMT_INCOME_TOTAL for customers categorized by their default status....
+2025-11-19 23:24:22,829 - agents.orchestrator - INFO - [ORCHESTRATOR] Refined prompt: 'Calculate the average AMT_INCOME_TOTAL for customers categorized by their default status....'
+2025-11-19 23:24:22,829 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 2: SQL GENERATION WITH RAG =====
+2025-11-19 23:24:22,829 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Processing: 'Calculate the average AMT_INCOME_TOTAL for customers categorized by their default status....'
+2025-11-19 23:24:22,830 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 2: Selecting relevant data...
+2025-11-19 23:24:22,889 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 3: Generating SQL with LLM...
+2025-11-19 23:24:22,890 - core.sql_generator - INFO - [SQL_GEN] Generating SQL for: 'Calculate the average AMT_INCOME_TOTAL for customers categorized by their default status....' with strategy: full_context
+2025-11-19 23:24:22,954 - core.sql_generator - INFO - [SQL_GEN] Attempt 1/4
+2025-11-19 23:24:23,901 - core.llm_manager - INFO - Generated response in 0.95s, tokens: 15474
+2025-11-19 23:24:23,907 - core.sql_generator - INFO - [SQL_GEN] Successfully generated SQL in 1.02s after 0 retries
+2025-11-19 23:24:23,907 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] SQL generated: confidence=0.55, retries=0
+2025-11-19 23:24:23,907 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Stage 4: Executing SQL query...
+2025-11-19 23:24:24,198 - core.database_adapter - INFO - Query executed in 0.29s, returned 2 rows
+2025-11-19 23:24:24,198 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Query executed: 2 rows in 0.29s
+2025-11-19 23:24:24,236 - core.enhanced_rag_system - INFO - Added 1 documents to RAG system
+2025-11-19 23:24:24,237 - core.dynamic_semantic_layer - INFO - Learned from query: 1 tables, feedback: None
+2025-11-19 23:24:24,237 - core.enhanced_rag_system - INFO - Learned from query execution: 2 rows in 0.29s
+2025-11-19 23:24:24,237 - core.dynamic_semantic_layer - INFO - Learned from query: 1 tables, feedback: successful
+2025-11-19 23:24:24,237 - agents.enhanced_sql_agent - INFO - [ENHANCED_SQL_AGENT] Total processing time: 1.41s
+2025-11-19 23:24:24,237 - agents.orchestrator - INFO - [ORCHESTRATOR] SQL executed: rows=2, time=0.29s
+2025-11-19 23:24:24,237 - agents.orchestrator - INFO - [ORCHESTRATOR] ===== STEP 3: VISUALIZATION =====
+2025-11-19 23:24:24,238 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Создание визуализации: rows=2, cols=2, question='Calculate the average AMT_INCOME_TOTAL for customers categor...'
+2025-11-19 23:24:24,238 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] → Создание визуализации типа: True
+2025-11-19 23:24:24,292 - choreographer.browsers.chromium - INFO - Chromium init'ed with kwargs {}
+2025-11-19 23:24:24,292 - choreographer.browsers.chromium - INFO - Found chromium path: /usr/local/bin/chrome
+2025-11-19 23:24:24,292 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmpiy45q25y.
+2025-11-19 23:24:24,292 - choreographer.browser_async - INFO - Opening browser.
+2025-11-19 23:24:24,296 - choreographer.utils._tmpfile - INFO - Temp directory created: /tmp/tmpba2o1prb.
+2025-11-19 23:24:24,308 - choreographer.browsers.chromium - INFO - ldd failed. e: Command '['ldd', '/usr/local/bin/chrome']' returned non-zero exit status 1., stderr: None
+2025-11-19 23:24:24,308 - choreographer.browsers.chromium - INFO - Temporary directory at: /tmp/tmpba2o1prb
+2025-11-19 23:24:24,755 - kaleido.kaleido - INFO - Conforming 1 to file:///tmp/tmpiy45q25y/index.html
+2025-11-19 23:24:24,757 - kaleido.kaleido - INFO - Waiting on all navigates
+2025-11-19 23:24:26,920 - kaleido.kaleido - INFO - All navigates done, putting them all in queue.
+2025-11-19 23:24:26,921 - kaleido.kaleido - INFO - Getting tab from queue (has 1)
+2025-11-19 23:24:26,921 - kaleido.kaleido - INFO - Got D6E0
+2025-11-19 23:24:26,921 - kaleido._kaleido_tab - INFO - Processing average_income_by_default_status.png
+2025-11-19 23:24:26,921 - kaleido._kaleido_tab - INFO - Sending big command for average_income_by_default_status.png.
+2025-11-19 23:24:27,076 - kaleido._kaleido_tab - INFO - Sent big command for average_income_by_default_status.png.
+2025-11-19 23:24:27,077 - kaleido.kaleido - INFO - Reloading tab D6E0 before return.
+2025-11-19 23:24:27,284 - kaleido.kaleido - INFO - Putting tab D6E0 back (queue size: 0).
+2025-11-19 23:24:27,284 - kaleido.kaleido - INFO - Waiting for all cleanups to finish.
+2025-11-19 23:24:27,284 - kaleido.kaleido - INFO - Exiting Kaleido
+2025-11-19 23:24:27,284 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:24:27,291 - choreographer.browser_async - INFO - Closing browser.
+2025-11-19 23:24:27,291 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:24:27,291 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:24:27,291 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:24:27,291 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:24:27,523 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:24:27,523 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:24:27,523 - choreographer.utils._tmpfile - INFO - TemporaryDirectory.cleanup() worked.
+2025-11-19 23:24:27,524 - choreographer.utils._tmpfile - INFO - shutil.rmtree worked.
+2025-11-19 23:24:27,524 - kaleido.kaleido - INFO - Cancelling tasks.
+2025-11-19 23:24:27,524 - kaleido.kaleido - INFO - Exiting Kaleido/Choreo
+2025-11-19 23:24:27,526 - agents.visualization_agent - INFO - [VISUALIZATION_AGENT] Визуализация создана: success=True, type=bar, image_size=26886 bytes
+2025-11-19 23:24:27,530 - agents.orchestrator - INFO - [ORCHESTRATOR] Visualization created: success=True, type=bar
+2025-11-19 23:24:27,530 - agents.orchestrator - INFO - [ORCHESTRATOR] Analyzing SQL results with AnalysisAgent...
+2025-11-19 23:24:27,531 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Начало анализа: question='Calculate the average AMT_INCOME_TOTAL for customers categor...', rows=2, cols=2
+2025-11-19 23:24:27,539 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] → Генерация интерпретации через LLM
+2025-11-19 23:24:28,965 - core.llm_manager - INFO - Generated response in 1.42s, tokens: 610
+2025-11-19 23:24:28,965 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Интерпретация сгенерирована: 367 символов
+2025-11-19 23:24:28,965 - agents.analysis_agent - INFO - [ANALYSIS_AGENT] Анализ завершен: insights=0, recommendations=2, confidence=0.70
+2025-11-19 23:24:28,967 - agents.orchestrator - INFO - [ORCHESTRATOR] Result analysis complete: insights=0
+2025-11-19 23:24:28,968 - agents.orchestrator - INFO - [ORCHESTRATOR] Localizing result to Russian...
+2025-11-19 23:24:30,030 - core.llm_manager - INFO - Generated response in 1.06s, tokens: 317
+2025-11-19 23:24:31,058 - core.llm_manager - INFO - Generated response in 1.03s, tokens: 233
+2025-11-19 23:24:31,729 - core.llm_manager - INFO - Generated response in 0.67s, tokens: 62
+2025-11-19 23:24:32,073 - core.llm_manager - INFO - Generated response in 0.34s, tokens: 58
+2025-11-19 23:24:32,799 - core.llm_manager - INFO - Generated response in 0.73s, tokens: 97
+2025-11-19 23:24:32,799 - agents.orchestrator - INFO - [ORCHESTRATOR] Pipeline completed: success=True, task_type=visualization
+2025-11-19 23:24:32,800 - core.database_adapter - ERROR - Query execution failed: (psycopg2.errors.UndefinedTable) relation "application_train_test" does not exist
+LINE 1: SELECT TARGET, AVG(AMT_INCOME_TOTAL) FROM application_train_...
+                                                  ^
+
+[SQL: SELECT TARGET, AVG(AMT_INCOME_TOTAL) FROM application_train_test GROUP BY TARGET LIMIT 100]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-11-19 23:24:32,801 - __main__ - WARNING - Ошибка при сравнении результатов: (psycopg2.errors.UndefinedTable) relation "application_train_test" does not exist
+LINE 1: SELECT TARGET, AVG(AMT_INCOME_TOTAL) FROM application_train_...
+                                                  ^
+
+[SQL: SELECT TARGET, AVG(AMT_INCOME_TOTAL) FROM application_train_test GROUP BY TARGET LIMIT 100]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-11-19 23:24:32,801 - __main__ - INFO - 📊 Прогресс: 10/10 | Сработало: 9 (90.0%) | Выполнилось: 9 (90.0%) | Похожий результат: 0 (0.0%) | Осталось: ~0.0 мин
+2025-11-19 23:24:32,802 - __main__ - INFO - 
+================================================================================
+2025-11-19 23:24:32,802 - __main__ - INFO - 📊 ФИНАЛЬНАЯ СТАТИСТИКА
+2025-11-19 23:24:32,802 - __main__ - INFO - ================================================================================
+2025-11-19 23:24:32,802 - __main__ - INFO - Всего примеров: 10
+2025-11-19 23:24:32,802 - __main__ - INFO - Сработало (пайплайн успешен): 9 (90.0%)
+2025-11-19 23:24:32,802 - __main__ - INFO - Выполнилось (SQL выполнен): 9 (90.0%)
+2025-11-19 23:24:32,802 - __main__ - INFO - Похожий результат: 0 (0.0%)
+2025-11-19 23:24:32,802 - __main__ - INFO - Ошибки: 1
+2025-11-19 23:24:32,802 - __main__ - INFO - Общее время: 3.7 мин
+2025-11-19 23:24:32,802 - __main__ - INFO - Среднее время на пример: 22.08 сек
+2025-11-19 23:24:32,802 - __main__ - INFO - 
+💾 Результаты сохранены: /home/dark/Documents/GitHub/SQL_Agent_proj/tests/results/benchmark_validation_20251119_232432.json

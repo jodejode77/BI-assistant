@@ -1,0 +1,15 @@
+{
+  "total_examples": 3000,
+  "target_size": 3000,
+  "visualization_types": {
+    "bar": 1007,
+    "pie": 665,
+    "table": 1186,
+    "line": 142
+  },
+  "sources": {
+    "json": 1466,
+    "csv": 1534
+  },
+  "seed": 42
+}
